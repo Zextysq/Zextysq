@@ -40,7 +40,6 @@ easyvk({
   }).then((connection) => {
   
     connection.on('message_new', (msg) => {
-      console.log(msg);
       msgTxt = msg['message']['text'];
       msgPeerID = msg['message']['peer_id'];
 
