@@ -211,14 +211,14 @@ easyvk({
       count: 10,
       extended: 0,
       access_token: appToken
-    }).then( async (vkr) => {
+    }).then((vkr) => {
 
       for (let i = 0; i < 10; i++) {
 
-        if (await vkr['response']['items'][i]['date']>LastTimeStamp) {
+        if (vkr['response']['items'][i]['date']>LastTimeStamp) {
 
           let messageTxt;
-          if (await vkr['response']['items'][i]['text'].codePointAt(0) == 91) {
+          if (vkr['response']['items'][i]['text'].codePointAt(0) == 91) {
             messageTxt = mesArr2[getRandomInt(3)];
           } else {
             messageTxt = mesArr[getRandomInt(3)];
@@ -229,7 +229,7 @@ easyvk({
             token: botGroupToken,
             peer_id: peerId,
             random_id: easyvk.randomId(),
-            attachment: 'wall' + groupForCheck + '_' + await vkr['response']['items'][i]['id']
+            attachment: 'wall' + groupForCheck + '_' + vkr['response']['items'][i]['id']
           }).then(() => {
             console.log('[V] Сообщение успешно переслано!');
           }).catch(error => {
