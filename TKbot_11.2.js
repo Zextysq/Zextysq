@@ -3,6 +3,7 @@ const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 const cheerio = require('cheerio');
 const childProcess = require('child_process');
 
+const botGroupID = '-197762661';
 const botGroupToken = '0de3a33959f7e507f03e07adcbd37538e370f8d3677a94ee9dd2855c8a835e061c5886e2d2648996fd7a5';
 const appToken = '98dad81f98dad81f98dad81f8498a9bba4998da98dad81fc7f542457a8c9067298f8f43';
 const groupForCheck = '-24039608';
@@ -97,13 +98,13 @@ easyvk({
     if ((text.toLowerCase().indexOf('колумнуть тебя') > -1) || (text.toLowerCase().indexOf('тебя колумнуть') > -1) || (text.toLowerCase().indexOf('колумну тебя') > -1) || (text.toLowerCase().indexOf('тебя колумну') > -1)) MsgSend([mesArr6[getRandomInt(2)], peer]);
 
     if ((text.toLowerCase().indexOf('обнять') > -1) || (text.toLowerCase().indexOf('поцеловать') > -1) || (text.toLowerCase().indexOf('похвалить') > -1)) {
-      if ((reply !== undefined) && (reply['from_id'] == -197840433)) MsgSend([mesArr10[getRandomInt(3)], peer]);
+      if ((reply !== undefined) && (reply['from_id'] == botGroupID)) MsgSend([mesArr10[getRandomInt(3)], peer]);
     }
     if ((text.toLowerCase().indexOf('кусь') > -1) || (text.toLowerCase().indexOf('укусить') > -1)) {
-      if ((reply !== undefined) && (reply['from_id'] == -197840433)) MsgSend([mesArr11[getRandomInt(3)], peer]);
+      if ((reply !== undefined) && (reply['from_id'] == botGroupID)) MsgSend([mesArr11[getRandomInt(3)], peer]);
     }
     if ((text.toLowerCase().indexOf('стукнуть') > -1) || (text.toLowerCase().indexOf('ударить') > -1) || (text.toLowerCase().indexOf('пнуть') > -1) || (text.toLowerCase().replace(/ё/g,"е").indexOf('шлепнуть') > -1)) {
-      if ((reply !== undefined) && (reply['from_id'] == -197840433)) MsgSend([mesArr12[getRandomInt(3)], peer]);
+      if ((reply !== undefined) && (reply['from_id'] == botGroupID)) MsgSend([mesArr12[getRandomInt(3)], peer]);
     }
 
     if ((text.charAt(0) == 'Т') && (text.charAt(1) == 'К')) {
