@@ -46,7 +46,6 @@ easyvk({
   }).then((connection) => {
   
     connection.on('message_new', (msg) => {
-      console.log(msg);
       DialogTypeTest(msg);
     });
   
@@ -121,8 +120,10 @@ easyvk({
       if ((text.length > 2) && (text.match(/\d+/) > 0)) EngStrGet([text, peer]);
       else MsgSend(['Использование команды "ТК" (Английские буквы): \n ТК <номер страницы> \n Возвращает оригинал страницы в виде картинки', peer]);
     }
-
-    if (attachments[0]['wall']['from']['id'] == 184225789) kick([peer, from_id]);
+    
+    if (attachments[0]['wall'] !== undefined) {
+      if (attachments[0]['wall']['from']['id'] == 184225789) kick([peer, from_id]);
+    }
   }
 
   function MsgSend(data) {
