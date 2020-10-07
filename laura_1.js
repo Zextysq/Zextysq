@@ -58,6 +58,7 @@ easyvk({
   })
 
   function msgTest(data) {
+    console.log(data);
     let type;
     if (data[3]-2000000000 > 0) type = true;
     else type = false;
@@ -99,23 +100,29 @@ easyvk({
       else MsgSend(['Использование команды "ТК" (Английские буквы): \n ТК <номер страницы> \n Возвращает оригинал страницы в виде картинки', peer]);
     }
     if ((text.toLowerCase().indexOf('сладких снов') > -1) || (text.toLowerCase().indexOf('добрых снов') > -1) || (text.toLowerCase().indexOf('спокойной ночи') > -1)) MsgSend([mesArr5[getRandomInt(3)], peer]);
-    if ((text.toLowerCase().indexOf('доброе утро') > -1) || (text.toLowerCase().indexOf('утрец') > -1)) MsgSend([mesArr6[getRandomInt(4)], peer]);
+    else if ((text.toLowerCase().indexOf('доброе утро') > -1) || (text.toLowerCase().indexOf('утрец') > -1)) MsgSend([mesArr6[getRandomInt(4)], peer]);
 
-    if (text.indexOf('погладил [id617699718') > -1) MsgSend([mesArr7[getRandomInt(4)], peer]);
-    if (text.indexOf('обнял [id617699718') > -1) MsgSend([mesArr8[getRandomInt(3)], peer]);
-    if (text.indexOf('поцеловал [id617699718') > -1) MsgSend([mesArr9[getRandomInt(2)], peer]);
-    if (text.indexOf('похвалил [id617699718') > -1) MsgSend([mesArr10[getRandomInt(2)], peer]);
-    if (text.indexOf('пнул [id617699718') > -1) MsgSend([mesArr11[getRandomInt(2)], peer]);
-    if (text.indexOf('сжёг [id617699718') > -1) MsgSend([mesArr12[getRandomInt(2)], peer]);
-    if (text.indexOf('убил [id617699718') > -1) MsgSend([mesArr13[getRandomInt(2)], peer]);
-    if (text.indexOf('лизнул [id617699718') > -1) MsgSend([mesArr14[getRandomInt(3)], peer]);
-    if (text.indexOf('взорвал [id617699718') > -1) MsgSend([mesArr15[getRandomInt(2)], peer]);
-    if (text.indexOf('связал [id617699718') > -1) MsgSend([mesArr16[getRandomInt(2)], peer]);
-    if (text.indexOf('ударил [id617699718') > -1) MsgSend([mesArr17[getRandomInt(2)], peer]);
-    if (text.indexOf('шлёпнул [id617699718') > -1) MsgSend([mesArr18[getRandomInt(2)], peer]);
-    if ((text.indexOf('кусьнул [id617699718') > -1) || (text.indexOf('укусил [id617699718') > -1)) MsgSend([mesArr19[getRandomInt(2)], peer]);
-    if (text.indexOf('интиму [id617699718') > -1) MsgSend([mesArr20[getRandomInt(4)], peer]);
-
+    else if ((text.indexOf('погладил [id617699718') > -1) || (text.indexOf('погладила [id617699718') > -1)) MsgSend([mesArr7[getRandomInt(4)], peer]);
+    else if ((text.indexOf('обнял [id617699718') > -1) || (text.indexOf('обняла [id617699718') > -1)) MsgSend([mesArr8[getRandomInt(3)], peer]);
+    else if ((text.indexOf('поцеловал [id617699718') > -1) || (text.indexOf('поцеловала [id617699718') > -1)) MsgSend([mesArr9[getRandomInt(2)], peer]);
+    else if ((text.indexOf('похвалил [id617699718') > -1) || (text.indexOf('похвалила [id617699718') > -1)) MsgSend([mesArr10[getRandomInt(2)], peer]);
+    else if ((text.indexOf('пнул [id617699718') > -1) || (text.indexOf('пнула [id617699718') > -1)) MsgSend([mesArr11[getRandomInt(2)], peer]);
+    else if ((text.indexOf('сжёг [id617699718') > -1) || (text.indexOf('сожгла [id617699718') > -1)) MsgSend([mesArr12[getRandomInt(2)], peer]);
+    else if ((text.indexOf('убил [id617699718') > -1) || (text.indexOf('убила [id617699718') > -1)) MsgSend([mesArr13[getRandomInt(2)], peer]);
+    else if (text.indexOf('лизнул [id617699718') > -1) MsgSend([mesArr14[getRandomInt(3)], peer]);
+    else if ((text.indexOf('взорвал [id617699718') > -1) || (text.indexOf('взорвала [id617699718') > -1)) MsgSend([mesArr15[getRandomInt(2)], peer]);
+    else if ((text.indexOf('связал [id617699718') > -1) || (text.indexOf('связала [id617699718') > -1)) MsgSend([mesArr16[getRandomInt(2)], peer]);
+    else if ((text.indexOf('ударил [id617699718') > -1) || (text.indexOf('ударила [id617699718') > -1)) MsgSend([mesArr17[getRandomInt(2)], peer]);
+    else if ((text.indexOf('шлёпнул [id617699718') > -1) || (text.indexOf('шлёпнула [id617699718') > -1)) MsgSend([mesArr18[getRandomInt(2)], peer]);
+    else if ((text.indexOf('кусьнул [id617699718') > -1) || (text.indexOf('укусил [id617699718') > -1) || (text.indexOf('кусьнула [id617699718') > -1) || (text.indexOf('укусила [id617699718') > -1)) MsgSend([mesArr19[getRandomInt(2)], peer]);
+    else if (text.indexOf('интиму [id617699718') > -1) MsgSend([mesArr20[getRandomInt(4)], peer]);
+    else if (text.indexOf('пять [id617699718') > -1) {
+      MsgSend(['Дать пять @id' + parseInt(text.match(/\d+/)), peer]);
+    }
+    else if (text.indexOf('руку [id617699718') > -1) {
+      MsgSend(['Пожать руку @id' + parseInt(text.match(/\d+/)), peer]);
+    }
+    
   }
 
   function MsgSend(data) {
