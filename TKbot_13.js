@@ -70,62 +70,66 @@ easyvk({
     let text = data[5];
     let attachments = data[6];
 
-    // Сообщение в беседе
-    if (type == true) {
+    if (attachments['from'] !== '618124000') {
 
-      if ((text.toLowerCase().indexOf('@all') > -1) || (text.toLowerCase().indexOf('@online') > -1)) MsgSend(['Что за сбор?', peer]);
-      
-    }
+      // Сообщение в беседе
+      if (type == true) {
 
-    // Сообщение в ЛС
-    else if (type == false) {
+        if ((text.toLowerCase().indexOf('@all') > -1) || (text.toLowerCase().indexOf('@online') > -1)) MsgSend(['Что за сбор?', peer]);
+        
+      }
 
-      if ((text.toLowerCase().indexOf('киска') > -1) || (text.toLowerCase().indexOf('киса') > -1)) MsgSend([mesArr21[getRandomInt(4)], peer]);
-      else if (((text.toLowerCase().indexOf('привет') > -1) || (text.toLowerCase().indexOf('здраст') > -1) || (text.toLowerCase().indexOf('здравст') > -1) || (text.toLowerCase().indexOf('хэй') > -1) || (text.toLowerCase().indexOf('хай') > -1)) && (text.indexOf('Приветик!') < 0)) MsgSend([mesArr4[getRandomInt(4)], peer]);
-      else if ((text.toLowerCase().indexOf('как дела') > -1) || (text.toLowerCase().indexOf('как самочувствие') > -1) || (text.toLowerCase().indexOf('как жизнь') > -1)) InfoSend(peer);
+      // Сообщение в ЛС
+      if (type == false) {
 
-    }
+        if ((text.toLowerCase().indexOf('киска') > -1) || (text.toLowerCase().indexOf('киса') > -1)) MsgSend([mesArr21[getRandomInt(4)], peer]);
+        if (((text.toLowerCase().indexOf('привет') > -1) || (text.toLowerCase().indexOf('здраст') > -1) || (text.toLowerCase().indexOf('здравст') > -1) || (text.toLowerCase().indexOf('хэй') > -1) || (text.toLowerCase().indexOf('хай') > -1)) && (text.indexOf('Приветик!') < 0)) MsgSend([mesArr4[getRandomInt(4)], peer]);
+        if ((text.toLowerCase().indexOf('как дела') > -1) || (text.toLowerCase().indexOf('как самочувствие') > -1) || (text.toLowerCase().indexOf('как жизнь') > -1)) InfoSend(peer);
 
-    // Универсальные
+      }
 
-    else if ((text.split(' ')[0].toLowerCase() == 'willow') || (text.split(' ')[0].toLowerCase() == 'виллоу')) {
-      if ((text.split(' ')[1] == undefined) || (text.split(' ')[1].toLowerCase() == 'wisp')) MsgSend([mesArr3[getRandomInt(4)], peer]);
-      else if ((text.toLowerCase().indexOf('киска') > -1) || (text.toLowerCase().indexOf('киса') > -1)) MsgSend([mesArr21[getRandomInt(4)], peer]);
-      else if (((text.toLowerCase().indexOf('привет') > -1) || (text.toLowerCase().indexOf('здраст') > -1) || (text.toLowerCase().indexOf('здравст') > -1) || (text.toLowerCase().indexOf('хэй') > -1) || (text.toLowerCase().indexOf('хай') > -1)) && (text.indexOf('Приветик!') < 0)) MsgSend([mesArr4[getRandomInt(4)], peer]);
-      else if ((text.toLowerCase().indexOf('как дела') > -1) || (text.toLowerCase().indexOf('как самочувствие') > -1) || (text.toLowerCase().indexOf('как жизнь') > -1)) InfoSend(peer);
-    }
-    else if ((text.charAt(0) == 'Т') && (text.charAt(1) == 'К')) {
-      if ((text.length > 2) && (text.match(/\d+/) > 0)) RusStrGet([text, peer]);
-      else MsgSend(['Использование команды "ТК" (Русские буквы): \n ТК <номер страницы> \n Возвращает переведённую страницу в виде картинки', peer]);
-    }
-    else if ((text.charAt(0) == 'T') && (text.charAt(1) == 'K')) {
-      if ((text.length > 2) && (text.match(/\d+/) > 0)) EngStrGet([text, peer]);
-      else MsgSend(['Использование команды "ТК" (Английские буквы): \n ТК <номер страницы> \n Возвращает оригинал страницы в виде картинки', peer]);
-    }
-    else if ((text.toLowerCase().indexOf('сладких снов') > -1) || (text.toLowerCase().indexOf('добрых снов') > -1) || (text.toLowerCase().indexOf('спокойной ночи') > -1)) MsgSend([mesArr5[getRandomInt(3)], peer]);
-    else if ((text.toLowerCase().indexOf('доброе утро') > -1) || (text.toLowerCase().indexOf('утрец') > -1)) MsgSend([mesArr6[getRandomInt(4)], peer]);
+      // Универсальные
 
-    else if ((text.indexOf('погладил [' + userID) > -1) || (text.indexOf('погладила [' + userID) > -1)) MsgSend([mesArr7[getRandomInt(4)], peer]);
-    else if ((text.indexOf('обнял [' + userID) > -1) || (text.indexOf('обняла [' + userID) > -1)) MsgSend([mesArr8[getRandomInt(3)], peer]);
-    else if ((text.indexOf('поцеловал [' + userID) > -1) || (text.indexOf('поцеловала [' + userID) > -1)) MsgSend([mesArr9[getRandomInt(2)], peer]);
-    else if ((text.indexOf('похвалил [' + userID) > -1) || (text.indexOf('похвалила [' + userID) > -1)) MsgSend([mesArr10[getRandomInt(2)], peer]);
-    else if ((text.indexOf('пнул [' + userID) > -1) || (text.indexOf('пнула [' + userID) > -1)) MsgSend([mesArr11[getRandomInt(2)], peer]);
-    else if ((text.indexOf('сжёг [' + userID) > -1) || (text.indexOf('сожгла [' + userID) > -1)) MsgSend([mesArr12[getRandomInt(2)], peer]);
-    else if ((text.indexOf('убил [' + userID) > -1) || (text.indexOf('убила [' + userID) > -1)) MsgSend([mesArr13[getRandomInt(2)], peer]);
-    else if ((text.indexOf('лизнул [' + userID) > -1) || (text.indexOf('лизнула [' + userID) > -1)) MsgSend([mesArr14[getRandomInt(3)], peer]);
-    else if ((text.indexOf('взорвал [' + userID) > -1) || (text.indexOf('взорвала [' + userID) > -1)) MsgSend([mesArr15[getRandomInt(2)], peer]);
-    else if ((text.indexOf('связал [' + userID) > -1) || (text.indexOf('связала [' + userID) > -1)) MsgSend([mesArr16[getRandomInt(2)], peer]);
-    else if ((text.indexOf('ударил [' + userID) > -1) || (text.indexOf('ударила [' + userID) > -1)) MsgSend([mesArr17[getRandomInt(2)], peer]);
-    else if ((text.indexOf('шлёпнул [' + userID) > -1) || (text.indexOf('шлёпнула [' + userID) > -1)) MsgSend([mesArr18[getRandomInt(2)], peer]);
-    else if ((text.indexOf('кусьнул [' + userID) > -1) || (text.indexOf('укусил [' + userID) > -1) || (text.indexOf('кусьнула [' + userID) > -1) || (text.indexOf('укусила [' + userID) > -1)) MsgSend([mesArr19[getRandomInt(2)], peer]);
-    else if (text.indexOf('интиму [' + userID) > -1) MsgSend([mesArr20[getRandomInt(4)], peer]);
-    else if ((text.indexOf('дал пять [' + userID) > -1) || (text.indexOf('дала пять [' + userID) > -1)) {
-      MsgSend(['Дать пять @id' + parseInt(text.match(/\d+/)), peer]);
+      if ((text.split(' ')[0].toLowerCase() == 'willow') || (text.split(' ')[0].toLowerCase() == 'виллоу')) {
+        if ((text.split(' ')[1] == undefined) || (text.split(' ')[1].toLowerCase() == 'wisp')) MsgSend([mesArr3[getRandomInt(4)], peer]);
+        if ((text.toLowerCase().indexOf('киска') > -1) || (text.toLowerCase().indexOf('киса') > -1)) MsgSend([mesArr21[getRandomInt(4)], peer]);
+        if (((text.toLowerCase().indexOf('привет') > -1) || (text.toLowerCase().indexOf('здраст') > -1) || (text.toLowerCase().indexOf('здравст') > -1) || (text.toLowerCase().indexOf('хэй') > -1) || (text.toLowerCase().indexOf('хай') > -1)) && (text.indexOf('Приветик!') < 0)) MsgSend([mesArr4[getRandomInt(4)], peer]);
+        if ((text.toLowerCase().indexOf('как дела') > -1) || (text.toLowerCase().indexOf('как самочувствие') > -1) || (text.toLowerCase().indexOf('как жизнь') > -1)) InfoSend(peer);
+      }
+      if ((text.charAt(0) == 'Т') && (text.charAt(1) == 'К')) {
+        if ((text.length > 2) && (text.match(/\d+/) > 0)) RusStrGet([text, peer]);
+        else MsgSend(['Использование команды "ТК" (Русские буквы): \n ТК <номер страницы> \n Возвращает переведённую страницу в виде картинки', peer]);
+      }
+      if ((text.charAt(0) == 'T') && (text.charAt(1) == 'K')) {
+        if ((text.length > 2) && (text.match(/\d+/) > 0)) EngStrGet([text, peer]);
+        else MsgSend(['Использование команды "ТК" (Английские буквы): \n ТК <номер страницы> \n Возвращает оригинал страницы в виде картинки', peer]);
+      }
+      if ((text.toLowerCase().indexOf('сладких снов') > -1) || (text.toLowerCase().indexOf('добрых снов') > -1) || (text.toLowerCase().indexOf('спокойной ночи') > -1)) MsgSend([mesArr5[getRandomInt(3)], peer]);
+      if ((text.toLowerCase().indexOf('доброе утро') > -1) || (text.toLowerCase().indexOf('утрец') > -1)) MsgSend([mesArr6[getRandomInt(4)], peer]);
+
+      if (attachments['from'] == '-174105461') {
+        if ((text.indexOf('погладил [' + userID) > -1) || (text.indexOf('погладила [' + userID) > -1)) MsgSend([mesArr7[getRandomInt(4)], peer]);
+        if ((text.indexOf('обнял [' + userID) > -1) || (text.indexOf('обняла [' + userID) > -1)) MsgSend([mesArr8[getRandomInt(3)], peer]);
+        if ((text.indexOf('поцеловал [' + userID) > -1) || (text.indexOf('поцеловала [' + userID) > -1)) MsgSend([mesArr9[getRandomInt(2)], peer]);
+        if ((text.indexOf('похвалил [' + userID) > -1) || (text.indexOf('похвалила [' + userID) > -1)) MsgSend([mesArr10[getRandomInt(2)], peer]);
+        if ((text.indexOf('пнул [' + userID) > -1) || (text.indexOf('пнула [' + userID) > -1)) MsgSend([mesArr11[getRandomInt(2)], peer]);
+        if ((text.indexOf('сжёг [' + userID) > -1) || (text.indexOf('сожгла [' + userID) > -1)) MsgSend([mesArr12[getRandomInt(2)], peer]);
+        if ((text.indexOf('убил [' + userID) > -1) || (text.indexOf('убила [' + userID) > -1)) MsgSend([mesArr13[getRandomInt(2)], peer]);
+        if ((text.indexOf('лизнул [' + userID) > -1) || (text.indexOf('лизнула [' + userID) > -1)) MsgSend([mesArr14[getRandomInt(3)], peer]);
+        if ((text.indexOf('взорвал [' + userID) > -1) || (text.indexOf('взорвала [' + userID) > -1)) MsgSend([mesArr15[getRandomInt(2)], peer]);
+        if ((text.indexOf('связал [' + userID) > -1) || (text.indexOf('связала [' + userID) > -1)) MsgSend([mesArr16[getRandomInt(2)], peer]);
+        if ((text.indexOf('ударил [' + userID) > -1) || (text.indexOf('ударила [' + userID) > -1)) MsgSend([mesArr17[getRandomInt(2)], peer]);
+        if ((text.indexOf('шлёпнул [' + userID) > -1) || (text.indexOf('шлёпнула [' + userID) > -1)) MsgSend([mesArr18[getRandomInt(2)], peer]);
+        if ((text.indexOf('кусьнул [' + userID) > -1) || (text.indexOf('укусил [' + userID) > -1) || (text.indexOf('кусьнула [' + userID) > -1) || (text.indexOf('укусила [' + userID) > -1)) MsgSend([mesArr19[getRandomInt(2)], peer]);
+        if (text.indexOf('интиму [' + userID) > -1) MsgSend([mesArr20[getRandomInt(4)], peer]);
+        if ((text.indexOf('дал пять [' + userID) > -1) || (text.indexOf('дала пять [' + userID) > -1)) {
+          MsgSend(['Дать пять @id' + parseInt(text.match(/\d+/)), peer]);
+        }
+        if ((text.indexOf('пожал руку [' + userID) > -1) || (text.indexOf('пожала руку [' + userID) > -1)) {
+          MsgSend(['Пожать руку @id' + parseInt(text.match(/\d+/)), peer]);
+        }
+      }
     }
-    else if ((text.indexOf('пожал руку [' + userID) > -1) || (text.indexOf('пожала руку [' + userID) > -1)) {
-      MsgSend(['Пожать руку @id' + parseInt(text.match(/\d+/)), peer]);
-    }
-    
   }
 
   function MsgSend(data) {
@@ -218,7 +222,7 @@ easyvk({
 
       for (let i = 0; i < 2; i++) {
 
-        if (vkr['response']['items'][i]['date']>LastTimeStamp) {
+        if (vkr['response']['items'][i]['date']>Math.trunc(LastTimeStamp)) {
 
           let messageTxt;
           if (vkr['response']['items'][i]['text'].codePointAt(0) == 91) {
