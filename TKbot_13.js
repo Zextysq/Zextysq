@@ -60,7 +60,6 @@ easyvk({
   })
 
   function msgTest(data) {
-    console.log(data);
     let type;
     if (data[3]-2000000000 > 0) type = true;
     else type = false;
