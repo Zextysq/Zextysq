@@ -35,6 +35,8 @@ const mesArr18 = ['За что?', '*Плачет*'];
 const mesArr19 = ['А у меня острые зубы!', 'Мои зубы поострее твоих будут ;-)'];
 const mesArr20 = ['~Аа-ах! \n Что ты делаешь!', 'Нгх... Да мы даже не знакомы!', '~Аа-ах! Ты в своём уме?', '~Мммм... Нгх'];
 const mesArr21 = ['Я тебе не киcка!', 'Не называй меня так!', 'Хватит!', 'Перестань!'];
+const mesArr22 = ['Давай!', 'А почему бы и нет?', 'Я только за!'];
+const mesArr23 = ['Добрый', 'Всем приятного вечера', 'Ага!'];
 
 easyvk({
   password: "Op.cont.2020!",
@@ -85,6 +87,7 @@ easyvk({
         if ((text.toLowerCase().indexOf('киска') > -1) || (text.toLowerCase().indexOf('киса') > -1)) MsgSend([mesArr21[getRandomInt(4)], peer]);
         if (((text.toLowerCase().indexOf('привет') > -1) || (text.toLowerCase().indexOf('здраст') > -1) || (text.toLowerCase().indexOf('здравст') > -1) || (text.toLowerCase().indexOf('хэй') > -1) || (text.toLowerCase().indexOf('хай') > -1)) && (text.indexOf('Приветик!') < 0)) MsgSend([mesArr4[getRandomInt(4)], peer]);
         if ((text.toLowerCase().indexOf('как дела') > -1) || (text.toLowerCase().indexOf('как самочувствие') > -1) || (text.toLowerCase().indexOf('как жизнь') > -1)) InfoSend(peer);
+        if ((text.toLowerCase().indexOf('давай дружить') > -1) || (text.toLowerCase().indexOf('будь моим другом') > -1)) MsgSend([mesArr22[getRandomInt(3)], peer]);
 
       }
 
@@ -106,6 +109,7 @@ easyvk({
       }
       if ((text.toLowerCase().indexOf('сладких снов') > -1) || (text.toLowerCase().indexOf('добрых снов') > -1) || (text.toLowerCase().indexOf('спокойной ночи') > -1)) MsgSend([mesArr5[getRandomInt(3)], peer]);
       if ((text.toLowerCase().indexOf('доброе утро') > -1) || (text.toLowerCase().indexOf('утрец') > -1)) MsgSend([mesArr6[getRandomInt(4)], peer]);
+      if ((text.toLowerCase().indexOf('добрый вечер') > -1) || (text.toLowerCase().indexOf('вечер добрый') > -1)) MsgSend([mesArr23[getRandomInt(3)], peer]);
 
       if (attachments['from'] == '-174105461') {
         if ((text.indexOf('погладил [' + userID) > -1) || (text.indexOf('погладила [' + userID) > -1)) MsgSend([mesArr7[getRandomInt(4)], peer]);
@@ -242,4 +246,12 @@ easyvk({
   }
   setInterval(postTest, 18000);
 
+  onlineMark();
+  function onlineMark () {
+    vk.call('account.setOnline').catch(error => {
+      console.log('[X] Не удаётся отправить статус, ошибка!');
+      console.log(error);
+    });
+  }
+  setInterval(onlineMark, 240000);
 })
