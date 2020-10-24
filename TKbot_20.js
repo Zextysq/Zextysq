@@ -156,8 +156,7 @@ easyvk({
     let text = data[5].toLowerCase();
     let attachments = data[6];
     let reputation = data[7];
-    console.log(reputation);
-
+    
     
     if ((text.charAt(0) == 'Т') && (text.charAt(1) == 'К')) {
       if ((text.length > 2) && (text.match(/\d+/) > 0)) RusStrGet([text, peer]);
