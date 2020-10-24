@@ -14,6 +14,8 @@ const appToken = '98dad81f98dad81f98dad81f8498a9bba4998da98dad81fc7f542457a8c906
 const peerId = '2000000001';
 const userID = 'id618124000';
 
+const rp = ['погладил','погладила','обнял','обняла','поцеловал','поцеловала','похвалил','похвалила','пнул','пнула','сжёг','сожгла','убил','убила','лизнул','лизнула','взорвал','взорвала','связал','связала','ударил','ударила','шлёпнул','шлёпнула','кусьнул','укусил','кусьнула','укусила','интиму'];
+
 const mesArr = ['Новый пост в группе, ня!', 'Хей, тут новый пост в группе!', 'Ловите новый пост в группе!'];
 const mesArr2 = ['Ловите новую страничку, ня!', 'Пс, тут новая страничка вышла!', 'Пора читать новую страничку!'];
 
@@ -41,58 +43,58 @@ const mesArr22 = ['Давай!', 'А почему бы и нет?', 'Я толь
 const mesArr23 = ['Добрый', 'Всем приятного вечера', 'Ага!'];
 
 
-const mesArr3_bad = ['Чего тебе надо?', 'Да тут я...', 'Ну что опять?']; //3
+const mesArr3_bad = ['Чего тебе надо?', 'Да тут я...', 'Ну что опять?'];
 const mesArr4_bad = ['Здраcте...', '*Не хочет здороваться*', 'Не пиши мне.', 'Не приставай ко мне.'];
-const mesArr5_bad = ['*Раздражённо* \n Сладких... снов', 'Спи уже.']; //2
-const mesArr6_bad = ['*Раздражённо* \n Доброе... утро', 'Проснись и пой...']; //2
+const mesArr5_bad = ['*Раздражённо* \n Сладких... снов', 'Спи уже.'];
+const mesArr6_bad = ['*Раздражённо* \n Доброе... утро', 'Проснись и пой...'];
 
-const mesArr7_bad = ['*Оскалила зубы*', 'Рр-р... Не приставай ко мне!']; //2
-const mesArr8_bad = ['*Краснеет*', '...', '*Смущённо отвернулась*']; //3
-const mesArr9_bad = ['Ты в своём уме?', 'Фу-фу-фу!']; //2
-const mesArr10_bad = ['*Краснеет*', '*Смущённо отвернулась*']; //2
-const mesArr11_bad = ['Я тебя ненавижу!', '*Плачет*']; //2
-const mesArr12_bad = ['У тебя всё в порядке?', 'Ты в своём уме?']; //2
-const mesArr13_bad = ['Убил призрака? Ахаха', 'Ну-ну']; //2
-const mesArr14_bad = ['Не, ну это уже нагло!', 'Ты в своём уме?', 'Я что на леденец похожа?']; //3
-const mesArr15_bad = ['А если я?', 'Не, ну это бан!']; //2
-const mesArr16_bad = ['Отпусти!', '*Пытается выбраться* \n ОТПУСТИ СЕЙЧАС ЖЕ!!!']; //2
-const mesArr17_bad = ['*Оскалила зубы*', 'Сама себя не защитишь - никто не защитит']; //2
-const mesArr18_bad = ['*Оскалила зубы*', 'Рр-р... Только попробуй!']; //2
-const mesArr19_bad = ['А у меня острые зубы!', 'Скоро мои зубы окажутся внутри твоей руки', 'Ну ты сам напросился!']; //3
-const mesArr20_bad = ['Ты в своём уме?', 'Нгх... Да я тебя ненавижу! Как ты смеешь?', '*Оскалила зубы* \n Издеваешься?!', 'Это низко.']; //4
+const mesArr7_bad = ['*Оскалила зубы*', 'Рр-р... Не приставай ко мне!'];
+const mesArr8_bad = ['*Краснеет*', '...', '*Смущённо отвернулась*'];
+const mesArr9_bad = ['Ты в своём уме?', 'Фу-фу-фу!'];
+const mesArr10_bad = ['*Краснеет*', '*Смущённо отвернулась*'];
+const mesArr11_bad = ['Я тебя ненавижу!', '*Плачет*'];
+const mesArr12_bad = ['У тебя всё в порядке?', 'Ты в своём уме?'];
+const mesArr13_bad = ['Убил призрака? Ахаха', 'Ну-ну'];
+const mesArr14_bad = ['Не, ну это уже нагло!', 'Ты в своём уме?', 'Я что на леденец похожа?'];
+const mesArr15_bad = ['А если я?', 'Не, ну это бан!'];
+const mesArr16_bad = ['Отпусти!', '*Пытается выбраться* \n ОТПУСТИ СЕЙЧАС ЖЕ!!!'];
+const mesArr17_bad = ['*Оскалила зубы*', 'Сама себя не защитишь - никто не защитит'];
+const mesArr18_bad = ['*Оскалила зубы*', 'Рр-р... Только попробуй!'];
+const mesArr19_bad = ['А у меня острые зубы!', 'Скоро мои зубы окажутся внутри твоей руки', 'Ну ты сам напросился!'];
+const mesArr20_bad = ['Ты в своём уме?', 'Нгх... Да я тебя ненавижу! Как ты смеешь?', '*Оскалила зубы* \n Издеваешься?!', 'Это низко.'];
 const mesArr21_bad = ['Я тебе не киcка! Ты ещё не понял?', 'Рр-р... Издеваешься?!', 'Отвали!'];
-const mesArr22_bad = ['После всего что ты мне наговорил? Ну ладно', 'Дай-ка подумать...', 'Предположим я тебя прощаю.']; //3
-const mesArr23_bad = ['Вечерочка...', '*Раздражённо* \n Добрый... вечер']; //2
+const mesArr22_bad = ['После всего что ты мне наговорил? Ну ладно', 'Дай-ка подумать...', 'Предположим я тебя прощаю.'];
+const mesArr23_bad = ['Вечерочка...', '*Раздражённо* \n Добрый... вечер'];
 
 
-const mesArr3_good = ['Слушаю', 'Что?', 'Что-то хочешь, ня?', 'Я здесь']; //4
-const mesArr4_good = ['Привeтик!', 'Ох, приветствую тебя!', 'О, а вот и ты)', 'Рада тебя видеть!']; //4
-const mesArr5_good = ['Спoкойной!', 'Спи сладко :3', 'Спокoйной ночи, ня!']; //3
-const mesArr6_good = ['Дoброе утро чатик :3', 'Утрeца!', 'Дoброе утро!', 'Пожать руку']; //4
+const mesArr3_good = ['Слушаю', 'Что?', 'Что-то хочешь, ня?', 'Я здесь'];
+const mesArr4_good = ['Привeтик!', 'Ох, приветствую тебя!', 'О, а вот и ты)', 'Рада тебя видеть!'];
+const mesArr5_good = ['Спoкойной!', 'Спи сладко :3', 'Спокoйной ночи, ня!'];
+const mesArr6_good = ['Дoброе утро чатик :3', 'Утрeца!', 'Дoброе утро!', 'Пожать руку'];
 
-const mesArr7_good = ['Приятно...', '*Мурлычет*', 'Ня :3', 'Обнять']; //4
-const mesArr8_good = ['Обнимашки!', 'Ня :3', 'Поцеловать']; //3
-const mesArr9_good = ['*Краснеет*', '*Растеряно посмотрела прямо в глаза*', '&#128536;']; //3
-const mesArr10_good = ['Всегда пожалуйста!', 'Рада стараться']; //2
-const mesArr11_good = ['За что?', '*Плачет*', 'Мы же были друзьями?!']; //3
-const mesArr12_good = ['Пусть всё горит... Но не я)', 'А призраки не горят ;)']; //2
-const mesArr13_good = ['Ух какой злой...', 'Это больно, наверное...']; //2
-const mesArr14_good = ['*Краснеет*', '*Смущённо отвернулась*', 'Мне это напоминает о маме... \n Не делай так']; //3
-const mesArr15_good = ['Ах ты! А если я?', 'Не, ну это бан!', 'Бомба на Б)']; //3
-const mesArr16_good = ['Няя...\nПусти!', '*Пытается выбраться*\nОТПУСТИ СЕЙЧАС ЖЕ!!!', 'Ты же не собираешься делать ничего плохого?']; //3
-const mesArr17_good = ['За что?', '*Плачет*', 'Мы же были друзьями?!']; //3
-const mesArr18_good = ['За что?', '*Плачет*', 'Мы же были друзьями?!']; //3
-const mesArr19_good = ['*Оскалилась в улыбке*', 'Мои зубы поострее твоих будут ;-)', 'А если я?']; //3
-const mesArr20_good = ['А спросить? Я не готова на такое!', 'Ищь чего удумал! Я не готова на такое!', 'Ты в своём уме? Сейчас?', 'Ва-а? Ты чего так неожиданно?']; //4
-const mesArr21_good = ['Я тебе не киcка!', 'Хей! Не называй меня так!', 'Хватит!', 'Хэй, перестань!']; //4
-const mesArr22_good = ['Мы и так друзья, глупенький!', 'Разве мы это уже не прошли?', 'Мы уже больше, чем друзья!']; //3
-const mesArr23_good = ['Добрый!', 'Всем приятного вечера!', 'И тебе приятного вечерочка!']; //3
+const mesArr7_good = ['Приятно...', '*Мурлычет*', 'Ня :3', 'Обнять'];
+const mesArr8_good = ['Обнимашки!', 'Ня :3', 'Поцеловать'];
+const mesArr9_good = ['*Краснеет*', '*Растеряно посмотрела прямо в глаза*', '&#128536;'];
+const mesArr10_good = ['Всегда пожалуйста!', 'Рада стараться'];
+const mesArr11_good = ['За что?', '*Плачет*', 'Мы же были друзьями?!'];
+const mesArr12_good = ['Пусть всё горит... Но не я)', 'А призраки не горят ;)'];
+const mesArr13_good = ['Ух какой злой...', 'Это больно, наверное...'];
+const mesArr14_good = ['*Краснеет*', '*Смущённо отвернулась*', 'Мне это напоминает о маме... \n Не делай так'];
+const mesArr15_good = ['Ах ты! А если я?', 'Не, ну это бан!', 'Бомба на Б)'];
+const mesArr16_good = ['Няя...\nПусти!', '*Пытается выбраться*\nОТПУСТИ СЕЙЧАС ЖЕ!!!', 'Ты же не собираешься делать ничего плохого?'];
+const mesArr17_good = ['За что?', '*Плачет*', 'Мы же были друзьями?!'];
+const mesArr18_good = ['За что?', '*Плачет*', 'Мы же были друзьями?!'];
+const mesArr19_good = ['*Оскалилась в улыбке*', 'Мои зубы поострее твоих будут ;-)', 'А если я?'];
+const mesArr20_good = ['А спросить? Я не готова на такое!', 'Ищь чего удумал! Я не готова на такое!', 'Ты в своём уме? Сейчас?', 'Ва-а? Ты чего так неожиданно?'];
+const mesArr21_good = ['Я тебе не киcка!', 'Хей! Не называй меня так!', 'Хватит!', 'Хэй, перестань!'];
+const mesArr22_good = ['Мы и так друзья, глупенький!', 'Разве мы это уже не прошли?', 'Мы уже больше, чем друзья!'];
+const mesArr23_good = ['Добрый!', 'Всем приятного вечера!', 'И тебе приятного вечерочка!'];
 
 const mysqlCon = mysql.createConnection({
   host: "localhost",
   user: "root",
   database: "willow_bd",
-  password: "serbia2005."
+  password: "Serbia2005."
 });
 mysqlCon.connect(function (err) {
   if (err) {
@@ -135,16 +137,47 @@ easyvk({
     let vkid;
     if ((type == true) && (attachments['from'] !== undefined)) vkid = attachments['from'];
     else vkid = data[3];
+    let text = data[5];
 
-    mysqlCon.query("SELECT * FROM willow_tab WHERE vkid = " + vkid,
-      function (err, results) {
-        if (err) console.log(err);
-        else {
-          if (results.length == 0) userAdd(vkid);
-          else msgResearch([type, vkid, data[2], data[3], data[4], data[5], attachments, results[0]['reputation']]);
-        }
+    if (vkid == '-174105461') {
+      let tmp = false;
+      rp.forEach(function(entry) {
+        if (text.indexOf(entry) > -1) tmp = true;
+      });
+      
+      if (tmp == true) {
+        mysqlCon.query("SELECT * FROM willow_tab WHERE vkid = " + parseInt(text.match(/\d+/)),
+          function (err, results) {
+            if (err) console.log(err);
+            else {
+              if (results.length == 0) userAdd(vkid);
+              else msgResearch([type, vkid, data[2], data[3], data[4], text, attachments, results[0]['reputation']]);
+            }
+          }
+        );
+      } else {
+        mysqlCon.query("SELECT * FROM willow_tab WHERE vkid = " + vkid,
+          function (err, results) {
+            if (err) console.log(err);
+            else {
+              if (results.length == 0) userAdd(vkid);
+              else msgResearch([type, vkid, data[2], data[3], data[4], text, attachments, results[0]['reputation']]);
+            }
+          }
+        );
       }
-    );
+    } else {
+      mysqlCon.query("SELECT * FROM willow_tab WHERE vkid = " + vkid,
+        function (err, results) {
+          if (err) console.log(err);
+          else {
+            if (results.length == 0) userAdd(vkid);
+            else msgResearch([type, vkid, data[2], data[3], data[4], text, attachments, results[0]['reputation']]);
+          }
+        }
+      );
+    }
+    
   }
 
   function msgResearch(data) {
@@ -165,63 +198,6 @@ easyvk({
     if ((text.charAt(0) == 'T') && (text.charAt(1) == 'K')) {
       if ((text.length > 2) && (text.match(/\d+/) > 0)) EngStrGet([text, peer]);
       else MsgSend(['Использование команды "ТК" (Английские буквы): \n ТК <номер страницы> \n Возвращает оригинал страницы в виде картинки', peer]);
-    }
-
-    // СРЕДНЯЯ РЕПУТАЦИЯ -25 до 25
-    if ((reputation < 25) && (reputation > -25)) {
-
-      // Сообщение в БЕСЕДЕ
-      if (type == true) {
-
-        if ((text.indexOf('@all') > -1) || (text.indexOf('@online') > -1)) MsgSend(['Что за сбор?', peer]);
-        
-      }
-  
-      // Сообщение в ЛС
-      if (type == false) {
-  
-        if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21[getRandomInt(4)], peer]); repDown([vkid, 5]); }
-        if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4[getRandomInt(4)], peer]);
-        if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
-        if ((text.indexOf('давай дружить') > -1) || (text.indexOf('будь моим другом') > -1)) { MsgSend([mesArr22[getRandomInt(3)], peer]); repUp(vkid); }
-  
-      }
-  
-      // Универсальные
-      if ((text.split(' ')[0] == 'willow') || (text.split(' ')[0] == 'виллоу')) {
-        if ((text.split(' ')[1] == undefined) || (text.split(' ')[1] == 'wisp')) MsgSend([mesArr3[getRandomInt(4)], peer]);
-        if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21[getRandomInt(4)], peer]); repDown([vkid, 5]); }
-        if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4[getRandomInt(4)], peer]);
-        if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
-      }
-      if ((text.indexOf('сладких снов') > -1) || (text.indexOf('добрых снов') > -1) || (text.indexOf('спокойной ночи') > -1)) { MsgSend([mesArr5[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
-      if ((text.indexOf('доброе утро') > -1) || (text.indexOf('утрец') > -1)) { MsgSend([mesArr6[getRandomInt(4)], peer]); repUp(parseInt(text.match(/\d+/))); }
-      if ((text.indexOf('добрый вечер') > -1) || (text.indexOf('вечер добрый') > -1)) { MsgSend([mesArr23[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
-  
-      if (vkid == '-174105461') {
-        if ((text.indexOf('погладил [' + userID) > -1) || (text.indexOf('погладила [' + userID) > -1)) { MsgSend([mesArr7[getRandomInt(4)], peer]); repUp(parseInt(text.match(/\d+/))); }
-        if ((text.indexOf('обнял [' + userID) > -1) || (text.indexOf('обняла [' + userID) > -1)) { MsgSend([mesArr8[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
-        if ((text.indexOf('поцеловал [' + userID) > -1) || (text.indexOf('поцеловала [' + userID) > -1)) { MsgSend([mesArr9[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
-        if ((text.indexOf('похвалил [' + userID) > -1) || (text.indexOf('похвалила [' + userID) > -1)) { MsgSend([mesArr10[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
-        if ((text.indexOf('пнул [' + userID) > -1) || (text.indexOf('пнула [' + userID) > -1)) { MsgSend([mesArr11[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 5]); }
-        if ((text.indexOf('сжёг [' + userID) > -1) || (text.indexOf('сожгла [' + userID) > -1)) { MsgSend([mesArr12[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if ((text.indexOf('убил [' + userID) > -1) || (text.indexOf('убила [' + userID) > -1)) { MsgSend([mesArr13[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if ((text.indexOf('лизнул [' + userID) > -1) || (text.indexOf('лизнула [' + userID) > -1)) MsgSend([mesArr14[getRandomInt(3)], peer]);
-        if ((text.indexOf('взорвал [' + userID) > -1) || (text.indexOf('взорвала [' + userID) > -1)) { MsgSend([mesArr15[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if ((text.indexOf('связал [' + userID) > -1) || (text.indexOf('связала [' + userID) > -1)) { MsgSend([mesArr16[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 2]); }
-        if ((text.indexOf('ударил [' + userID) > -1) || (text.indexOf('ударила [' + userID) > -1)) { MsgSend([mesArr17[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if ((text.indexOf('шлёпнул [' + userID) > -1) || (text.indexOf('шлёпнула [' + userID) > -1)) { MsgSend([mesArr18[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if ((text.indexOf('кусьнул [' + userID) > -1) || (text.indexOf('укусил [' + userID) > -1) || (text.indexOf('кусьнула [' + userID) > -1) || (text.indexOf('укусила [' + userID) > -1)) { MsgSend([mesArr19[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if (text.indexOf('интиму [' + userID) > -1) { MsgSend([mesArr20[getRandomInt(4)], peer]); repDown([parseInt(text.match(/\d+/)), 5]); }
-        if ((text.indexOf('дал пять [' + userID) > -1) || (text.indexOf('дала пять [' + userID) > -1)) {
-          MsgSend(['Дать пять @id' + parseInt(text.match(/\d+/)), peer]);
-          repUp(parseInt(text.match(/\d+/)));
-        }
-        if ((text.indexOf('пожал руку [' + userID) > -1) || (text.indexOf('пожала руку [' + userID) > -1)) {
-          MsgSend(['Пожать руку @id' + parseInt(text.match(/\d+/)), peer]);
-          repUp(parseInt(text.match(/\d+/)));
-        }
-      }
     }
 
     // ПЛОХАЯ РЕПУТАЦИЯ ниже -25
@@ -270,7 +246,7 @@ easyvk({
         if ((text.indexOf('ударил [' + userID) > -1) || (text.indexOf('ударила [' + userID) > -1)) {
           let tmp = mesArr17_bad[getRandomInt(2)];
           if (tmp == 'Сама себя не защитишь - никто не защитит') {
-            MsgSend(['Ударить @id' + match(/\d+/) + '\n' + tmp, peer]);
+            MsgSend(['Ударить @id' + text.match(/\d+/) + '\n' + tmp, peer]);
             repDown([parseInt(text.match(/\d+/)), 1]);
           } else {
             MsgSend([tmp, peer]);
@@ -281,7 +257,7 @@ easyvk({
         if ((text.indexOf('кусьнул [' + userID) > -1) || (text.indexOf('укусил [' + userID) > -1) || (text.indexOf('кусьнула [' + userID) > -1) || (text.indexOf('укусила [' + userID) > -1)) {
           let tmp = mesArr19_bad[getRandomInt(2)];
           if (tmp == 'Ну ты сам напросился!') {
-            MsgSend(['Укусить @id' + match(/\d+/) + '\n' + tmp, peer]);
+            MsgSend(['Укусить @id' + text.match(/\d+/) + '\n' + tmp, peer]);
             repDown([parseInt(text.match(/\d+/)), 1]);
           } else {
             MsgSend([tmp, peer]);
@@ -323,11 +299,11 @@ easyvk({
       if ((text.indexOf('доброе утро') > -1) || (text.indexOf('утрец') > -1)) {
         let tmp = mesArr6_good[getRandomInt(4)];
         if (tmp == 'Пожать руку') {
-          MsgSend([tmp + ' @id' + match(/\d+/), peer]);
-          repUp([parseInt(text.match(/\d+/)), 1]);
+          MsgSend([tmp + ' @id' + text.match(/\d+/), peer]);
+          repUp(parseInt(text.match(/\d+/)));
         } else {
           MsgSend([tmp, peer]);
-          repUp([parseInt(text.match(/\d+/)), 1]);
+          repUp(parseInt(text.match(/\d+/)));
         }
       }
       if ((text.indexOf('добрый вечер') > -1) || (text.indexOf('вечер добрый') > -1)) { MsgSend([mesArr23_good[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
@@ -336,21 +312,21 @@ easyvk({
         if ((text.indexOf('погладил [' + userID) > -1) || (text.indexOf('погладила [' + userID) > -1)) {
           let tmp = mesArr7_good[getRandomInt(4)];
           if (tmp == 'Обнять') {
-            MsgSend([tmp + ' @id' + match(/\d+/), peer]);
-            repUp([parseInt(text.match(/\d+/)), 2]);
+            MsgSend([tmp + ' @id' + text.match(/\d+/), peer]);
+            repUp(parseInt(text.match(/\d+/)));
           } else {
             MsgSend([tmp, peer]);
-            repUp([parseInt(text.match(/\d+/)), 2]);
+            repUp(parseInt(text.match(/\d+/)));
           }
         }
         if ((text.indexOf('обнял [' + userID) > -1) || (text.indexOf('обняла [' + userID) > -1)) {
           let tmp = mesArr8_good[getRandomInt(3)];
           if (tmp == 'Поцеловать') {
-            MsgSend([tmp + ' @id' + match(/\d+/), peer]);
-            repUp([parseInt(text.match(/\d+/)), 2]);
+            MsgSend([tmp + ' @id' + text.match(/\d+/), peer]);
+            repUp(parseInt(text.match(/\d+/)));
           } else {
             MsgSend([tmp, peer]);
-            repUp([parseInt(text.match(/\d+/)), 2]);
+            repUp(parseInt(text.match(/\d+/)));
           }
         }
         if ((text.indexOf('поцеловал [' + userID) > -1) || (text.indexOf('поцеловала [' + userID) > -1)) { MsgSend([mesArr9_good[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
@@ -365,6 +341,63 @@ easyvk({
         if ((text.indexOf('шлёпнул [' + userID) > -1) || (text.indexOf('шлёпнула [' + userID) > -1)) { MsgSend([mesArr18_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
         if ((text.indexOf('кусьнул [' + userID) > -1) || (text.indexOf('укусил [' + userID) > -1) || (text.indexOf('кусьнула [' + userID) > -1) || (text.indexOf('укусила [' + userID) > -1)) { MsgSend([mesArr19_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
         if (text.indexOf('интиму [' + userID) > -1) { MsgSend([mesArr20_good[getRandomInt(4)], peer]); repDown([parseInt(text.match(/\d+/)), 10]); }
+        if ((text.indexOf('дал пять [' + userID) > -1) || (text.indexOf('дала пять [' + userID) > -1)) {
+          MsgSend(['Дать пять @id' + parseInt(text.match(/\d+/)), peer]);
+          repUp(parseInt(text.match(/\d+/)));
+        }
+        if ((text.indexOf('пожал руку [' + userID) > -1) || (text.indexOf('пожала руку [' + userID) > -1)) {
+          MsgSend(['Пожать руку @id' + parseInt(text.match(/\d+/)), peer]);
+          repUp(parseInt(text.match(/\d+/)));
+        }
+      }
+    }
+
+    // СРЕДНЯЯ РЕПУТАЦИЯ -25 до 25
+    else {
+
+      // Сообщение в БЕСЕДЕ
+      if (type == true) {
+
+        if ((text.indexOf('@all') > -1) || (text.indexOf('@online') > -1)) MsgSend(['Что за сбор?', peer]);
+        
+      }
+  
+      // Сообщение в ЛС
+      if (type == false) {
+  
+        if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21[getRandomInt(4)], peer]); repDown([vkid, 5]); }
+        if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4[getRandomInt(4)], peer]);
+        if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
+        if ((text.indexOf('давай дружить') > -1) || (text.indexOf('будь моим другом') > -1)) { MsgSend([mesArr22[getRandomInt(3)], peer]); repUp(vkid); }
+  
+      }
+  
+      // Универсальные
+      if ((text.split(' ')[0] == 'willow') || (text.split(' ')[0] == 'виллоу')) {
+        if ((text.split(' ')[1] == undefined) || (text.split(' ')[1] == 'wisp')) MsgSend([mesArr3[getRandomInt(4)], peer]);
+        if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21[getRandomInt(4)], peer]); repDown([vkid, 5]); }
+        if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4[getRandomInt(4)], peer]);
+        if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
+      }
+      if ((text.indexOf('сладких снов') > -1) || (text.indexOf('добрых снов') > -1) || (text.indexOf('спокойной ночи') > -1)) { MsgSend([mesArr5[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
+      if ((text.indexOf('доброе утро') > -1) || (text.indexOf('утрец') > -1)) { MsgSend([mesArr6[getRandomInt(4)], peer]); repUp(parseInt(text.match(/\d+/))); }
+      if ((text.indexOf('добрый вечер') > -1) || (text.indexOf('вечер добрый') > -1)) { MsgSend([mesArr23[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
+  
+      if (vkid == '-174105461') {
+        if ((text.indexOf('погладил [' + userID) > -1) || (text.indexOf('погладила [' + userID) > -1)) { MsgSend([mesArr7[getRandomInt(4)], peer]); repUp(parseInt(text.match(/\d+/))); }
+        if ((text.indexOf('обнял [' + userID) > -1) || (text.indexOf('обняла [' + userID) > -1)) { MsgSend([mesArr8[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
+        if ((text.indexOf('поцеловал [' + userID) > -1) || (text.indexOf('поцеловала [' + userID) > -1)) { MsgSend([mesArr9[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
+        if ((text.indexOf('похвалил [' + userID) > -1) || (text.indexOf('похвалила [' + userID) > -1)) { MsgSend([mesArr10[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
+        if ((text.indexOf('пнул [' + userID) > -1) || (text.indexOf('пнула [' + userID) > -1)) { MsgSend([mesArr11[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 5]); }
+        if ((text.indexOf('сжёг [' + userID) > -1) || (text.indexOf('сожгла [' + userID) > -1)) { MsgSend([mesArr12[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if ((text.indexOf('убил [' + userID) > -1) || (text.indexOf('убила [' + userID) > -1)) { MsgSend([mesArr13[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if ((text.indexOf('лизнул [' + userID) > -1) || (text.indexOf('лизнула [' + userID) > -1)) MsgSend([mesArr14[getRandomInt(3)], peer]);
+        if ((text.indexOf('взорвал [' + userID) > -1) || (text.indexOf('взорвала [' + userID) > -1)) { MsgSend([mesArr15[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if ((text.indexOf('связал [' + userID) > -1) || (text.indexOf('связала [' + userID) > -1)) { MsgSend([mesArr16[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 2]); }
+        if ((text.indexOf('ударил [' + userID) > -1) || (text.indexOf('ударила [' + userID) > -1)) { MsgSend([mesArr17[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if ((text.indexOf('шлёпнул [' + userID) > -1) || (text.indexOf('шлёпнула [' + userID) > -1)) { MsgSend([mesArr18[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if ((text.indexOf('кусьнул [' + userID) > -1) || (text.indexOf('укусил [' + userID) > -1) || (text.indexOf('кусьнула [' + userID) > -1) || (text.indexOf('укусила [' + userID) > -1)) { MsgSend([mesArr19[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if (text.indexOf('интиму [' + userID) > -1) { MsgSend([mesArr20[getRandomInt(4)], peer]); repDown([parseInt(text.match(/\d+/)), 5]); }
         if ((text.indexOf('дал пять [' + userID) > -1) || (text.indexOf('дала пять [' + userID) > -1)) {
           MsgSend(['Дать пять @id' + parseInt(text.match(/\d+/)), peer]);
           repUp(parseInt(text.match(/\d+/)));
@@ -422,7 +455,6 @@ easyvk({
             let lastact = results[0]['timestamp'];
             mysqlCon.query(tmp, function (err, results) {
               if (err) console.log(err);
-              else console.log("Репутация " + vkid + " изменена");
             });
 
           } else {
@@ -448,9 +480,8 @@ easyvk({
             if ((lastact + 600 < now) || (lastact == null)) {
               mysqlCon.query(tmp, function (err, results) {
                 if (err) console.log(err);
-                else console.log("Репутация " + vkid + " изменена");
               });
-            } else console.log('С последнего изменения репутации ещё не прошло 10 мин');
+            }
 
           } else {
             console.log("[X] Бд вернула пустой результат!");
