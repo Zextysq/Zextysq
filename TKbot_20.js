@@ -3,7 +3,6 @@ const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 const cheerio = require('cheerio');
 const childProcess = require('child_process');
 const mysql = require("mysql2");
-const { log } = require('console');
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
