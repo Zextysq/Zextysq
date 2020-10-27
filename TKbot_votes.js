@@ -16,7 +16,7 @@ const mysqlCon = mysql.createConnection({
   host: "localhost",
   user: "root",
   database: "willow_bd",
-  password: "serbia2005."
+  password: "Serbia2005."
 });
 mysqlCon.connect(function (err) {
   if (err) {
