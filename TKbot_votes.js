@@ -85,7 +85,7 @@ easyvk({
                   }
                 }
 
-                newVote([photos_array, tmp['conversation_message_id']]);
+                newVote([photos_array, tmp['conversation_message_id'], vkr['response']['items'][0]['from_id']]);
 
               } else {
                 MsgSend(['Отправь "!начать" в ответ(reply) на сообщение с артами', peerId]);
@@ -100,7 +100,7 @@ easyvk({
           }
         }
 
-        if (text == '!закончить') {
+        if ((text == '!закончить') || (text == '!завершить')) {
           if (attachments['reply'] !== undefined) {
             let tmp = JSON.parse(attachments['reply']);
 
@@ -123,12 +123,16 @@ easyvk({
                       mysqlCon.query('SELECT * FROM willow_vote WHERE msgid = ' + tmp['conversation_message_id'] + ' ORDER BY fin_score DESC', function (err, results) {
                         if (err) console.log(err);
                         else {
+                          let fin_score = 0;
+                          for (let i = 0; i < results['length']; i++) {
+                            fin_score += results[i]['fin_score'];
+                          }
                           vk.uploader.getUploadURL('photos.getMessagesUploadServer').then(async (upload_url) => {
                             let fileData = await vk.uploader.uploadFetchedFile(upload_url, results[0]['picture'], 'photo', {});
                             fileData = await vk.post('photos.saveMessagesPhoto', fileData);
                             fileData = fileData[0];
                             let attachment = [`photo${fileData.owner_id}_${fileData.id}_${fileData.access_key}`];
-                            MsgSend(['И, набрав ' + results[0]['fin_score'] + ' очков, этот арт получает первое место!', peerId, attachment]);
+                            MsgSend(['И, набрав ' + results[0]['fin_score'].toFixed(1) + ' очков, этот арт получает первое место!\nОбщий рейтинг - ' + (fin_score/results['length']).toFixed(1), peerId, attachment]);
                           });
                         }
                       });
@@ -211,6 +215,7 @@ easyvk({
   function newVote(data) {
     let photos_array = data[0];
     let votemsg = data[1];
+    let vkid = data[2];
 
     mysqlCon.query('SELECT * FROM willow_vote WHERE msgid = ' + votemsg, function (err, results) {
       if (err) {
@@ -221,7 +226,7 @@ easyvk({
           
           let tmp = 'INSERT INTO willow_vote(picture, day, status, msgid, score, votes, vkids) VALUES'
           for (let i = 0; i < photos_array['length']; i++) {
-            tmp += '("' + photos_array[i] + '", NOW(), true, ' + votemsg + ', 0, 0, "")';
+            tmp += '("' + photos_array[i] + '", NOW(), true, ' + votemsg + ', 0, 0, "' + vkid + ',")';
             if (i+1 == photos_array['length']) tmp += ';'
             else tmp += ', '
           }
