@@ -138,7 +138,7 @@ easyvk({
     if ((type == true) && (attachments['from'] !== undefined)) vkid = attachments['from'];
     else vkid = data[3];
     let text = data[5];
-    let isrp = false;
+    var isrp = false;
 
     if (vkid == '-174105461') {
       
