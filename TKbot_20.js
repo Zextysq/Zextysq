@@ -140,13 +140,13 @@ easyvk({
     let text = data[5];
 
     if (vkid == '-174105461') {
-      let rp = false;
+      let isrp = false;
       let tmpid;
       rp.forEach(function(entry) {
-        if (text.indexOf(entry) > -1) rp = true;
+        if (text.indexOf(entry) > -1) isrp = true;
       });
 
-      if (rp == true) {
+      if (isrp == true) {
         tmpid = parseInt(text.match(/\d+/));
       } else {
         tmpid = vkid;
@@ -157,7 +157,7 @@ easyvk({
           if (err) console.log(err);
           else {
             if (results.length == 0) userAdd(vkid);
-            else msgResearch([type, vkid, data[2], data[3], data[4], text, attachments, results[0]['reputation']]);
+            else msgResearch([type, vkid, data[2], data[3], data[4], text, attachments, results[0]['reputation'], isrp]);
           }
         }
       );
@@ -168,7 +168,7 @@ easyvk({
           if (err) console.log(err);
           else {
             if (results.length == 0) userAdd(vkid);
-            else msgResearch([type, vkid, data[2], data[3], data[4], text, attachments, results[0]['reputation']]);
+            else msgResearch([type, vkid, data[2], data[3], data[4], text, attachments, results[0]['reputation'], isrp]);
           }
         }
       );
@@ -185,50 +185,25 @@ easyvk({
     let text = data[5].toLowerCase();
     let attachments = data[6];
     let reputation = data[7];
+    let isrp = data[8];
     
     
-    if ((text.charAt(0) == 'Т') && (text.charAt(1) == 'К')) {
+    if ((text.charAt(0) == 'т') && (text.charAt(1) == 'к')) {
       if ((text.length > 2) && (text.match(/\d+/) > 0)) RusStrGet([text, peer]);
       else MsgSend(['Использование команды "ТК" (Русские буквы): \n ТК <номер страницы> \n Возвращает переведённую страницу в виде картинки', peer]);
     }
-    if ((text.charAt(0) == 'T') && (text.charAt(1) == 'K')) {
+    if ((text.charAt(0) == 't') && (text.charAt(1) == 'k')) {
       if ((text.length > 2) && (text.match(/\d+/) > 0)) EngStrGet([text, peer]);
       else MsgSend(['Использование команды "ТК" (Английские буквы): \n ТК <номер страницы> \n Возвращает оригинал страницы в виде картинки', peer]);
+    }
+    if (type == true) {
+      if ((text.indexOf('@all') > -1) || (text.indexOf('@online') > -1)) MsgSend(['Что за сбор?', peer]);
     }
 
     // ПЛОХАЯ РЕПУТАЦИЯ ниже -25
     if (reputation < -25) {
+      if ((isrp == true) && (vkid == '-174105461')) {
 
-      // Сообщение в БЕСЕДЕ
-      if (type == true) {
-
-        if ((text.indexOf('@all') > -1) || (text.indexOf('@online') > -1)) MsgSend(['Что за сбор?', peer]);
-        
-      }
-  
-      // Сообщение в ЛС
-      if (type == false) {
-  
-        if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21_bad[getRandomInt(3)], peer]); repDown([vkid, 5]); }
-        if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4_bad[getRandomInt(4)], peer]);
-        if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
-        if ((text.indexOf('давай дружить') > -1) || (text.indexOf('будь моим другом') > -1)) { MsgSend([mesArr22_bad[getRandomInt(3)], peer]); repUp(vkid); }
-        if ((text.indexOf('прости') > -1) || (text.indexOf('прошу прощения') > -1)) { MsgSend(['Предположим прощаю', peer]); repUp(vkid); }
-  
-      }
-  
-      // Универсальные
-      if ((text.split(' ')[0] == 'willow') || (text.split(' ')[0] == 'виллоу')) {
-        if ((text.split(' ')[1] == undefined) || (text.split(' ')[1] == 'wisp')) MsgSend([mesArr3_bad[getRandomInt(3)], peer]);
-        if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21_bad[getRandomInt(3)], peer]); repDown([vkid, 5]); }
-        if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4_bad[getRandomInt(4)], peer]);
-        if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
-      }
-      if ((text.indexOf('сладких снов') > -1) || (text.indexOf('добрых снов') > -1) || (text.indexOf('спокойной ночи') > -1)) { MsgSend([mesArr5_bad[getRandomInt(2)], peer]); repUp(vkid); }
-      if ((text.indexOf('доброе утро') > -1) || (text.indexOf('утрец') > -1)) { MsgSend([mesArr6_bad[getRandomInt(2)], peer]); repUp(vkid); }
-      if ((text.indexOf('добрый вечер') > -1) || (text.indexOf('вечер добрый') > -1)) { MsgSend([mesArr23_bad[getRandomInt(2)], peer]); repUp(vkid); }
-  
-      if (vkid == '-174105461') {
         if ((text.indexOf('погладил [' + userID) > -1) || (text.indexOf('погладила [' + userID) > -1)) { MsgSend([mesArr7_bad[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
         if ((text.indexOf('обнял [' + userID) > -1) || (text.indexOf('обняла [' + userID) > -1)) { MsgSend([mesArr8_bad[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
         if ((text.indexOf('поцеловал [' + userID) > -1) || (text.indexOf('поцеловала [' + userID) > -1)) { MsgSend([mesArr9_bad[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
@@ -261,49 +236,37 @@ easyvk({
           }
         }
         if (text.indexOf('интиму [' + userID) > -1) { MsgSend([mesArr20_bad[getRandomInt(4)], peer]); repDown([parseInt(text.match(/\d+/)), 10]); }
+
+      } else {
+
+        // Сообщение в ЛС
+        if (type == false) {
+    
+          if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21_bad[getRandomInt(3)], peer]); repDown([vkid, 5]); }
+          if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4_bad[getRandomInt(4)], peer]);
+          if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
+          if ((text.indexOf('давай дружить') > -1) || (text.indexOf('будь моим другом') > -1)) { MsgSend([mesArr22_bad[getRandomInt(3)], peer]); repUp(vkid); }
+          if ((text.indexOf('прости') > -1) || (text.indexOf('прошу прощения') > -1)) { MsgSend(['Предположим прощаю', peer]); repUp(vkid); }
+    
+        }
+    
+        // Универсальные
+        if ((text.split(' ')[0] == 'willow') || (text.split(' ')[0] == 'виллоу') || (text.split(' ')[0] == 'уиллоу')) {
+          if ((text.split(' ')[1] == undefined) || (text.split(' ')[1] == 'wisp')) MsgSend([mesArr3_bad[getRandomInt(3)], peer]);
+          if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21_bad[getRandomInt(3)], peer]); repDown([vkid, 5]); }
+          if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4_bad[getRandomInt(4)], peer]);
+          if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
+        }
+        if ((text.indexOf('сладких снов') > -1) || (text.indexOf('добрых снов') > -1) || (text.indexOf('спокойной ночи') > -1)) { MsgSend([mesArr5_bad[getRandomInt(2)], peer]); repUp(vkid); }
+        if ((text.indexOf('доброе утро') > -1) || (text.indexOf('утрец') > -1)) { MsgSend([mesArr6_bad[getRandomInt(2)], peer]); repUp(vkid); }
+        if ((text.indexOf('добрый вечер') > -1) || (text.indexOf('вечер добрый') > -1)) { MsgSend([mesArr23_bad[getRandomInt(2)], peer]); repUp(vkid); }
       }
     }
 
     // ОТЛИЧНАЯ РЕПУТАЦИЯ более 25
     if (reputation > 25) {
+      if ((isrp == true) && (vkid == '-174105461')) {
 
-      // Сообщение в БЕСЕДЕ
-      if (type == true) {
-
-        if ((text.indexOf('@all') > -1) || (text.indexOf('@online') > -1)) MsgSend(['Зачем всех собрал?', peer]);
-        
-      }
-  
-      // Сообщение в ЛС
-      if (type == false) {
-  
-        if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21_good[getRandomInt(4)], peer]); repDown([vkid, 2]); }
-        if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4_good[getRandomInt(4)], peer]);
-        if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
-        if ((text.indexOf('давай дружить') > -1) || (text.indexOf('будь моим другом') > -1)) MsgSend([mesArr22_good[getRandomInt(3)], peer]);
-  
-      }
-  
-      // Универсальные
-      if ((text.split(' ')[0] == 'willow') || (text.split(' ')[0] == 'виллоу')) {
-        if ((text.split(' ')[1] == undefined) || (text.split(' ')[1] == 'wisp')) MsgSend([mesArr3_good[getRandomInt(4)], peer]);
-        if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21_good[getRandomInt(4)], peer]); repDown([vkid, 2]); }
-        if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4_good[getRandomInt(4)], peer]);
-        if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
-      }
-      if ((text.indexOf('сладких снов') > -1) || (text.indexOf('добрых снов') > -1) || (text.indexOf('спокойной ночи') > -1)) { MsgSend([mesArr5_good[getRandomInt(3)], peer]); repUp(vkid); }
-      if ((text.indexOf('доброе утро') > -1) || (text.indexOf('утрец') > -1)) {
-        let tmp = mesArr6_good[getRandomInt(4)];
-        if (tmp == 'Пожать руку') {
-          MsgSend([tmp + ' @id' + vkid, peer]);
-        } else {
-          MsgSend([tmp, peer]);
-        }
-        repUp(vkid);
-      }
-      if ((text.indexOf('добрый вечер') > -1) || (text.indexOf('вечер добрый') > -1)) { MsgSend([mesArr23_good[getRandomInt(3)], peer]); repUp(vkid); }
-  
-      if (vkid == '-174105461') {
         if ((text.indexOf('погладил [' + userID) > -1) || (text.indexOf('погладила [' + userID) > -1)) {
           let tmp = mesArr7_good[getRandomInt(4)];
           if (tmp == 'Обнять') {
@@ -344,41 +307,43 @@ easyvk({
           MsgSend(['Пожать руку @id' + parseInt(text.match(/\d+/)), peer]);
           repUp(parseInt(text.match(/\d+/)));
         }
+
+      } else {
+        // Сообщение в ЛС
+        if (type == false) {
+    
+          if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21_good[getRandomInt(4)], peer]); repDown([vkid, 2]); }
+          if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4_good[getRandomInt(4)], peer]);
+          if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
+          if ((text.indexOf('давай дружить') > -1) || (text.indexOf('будь моим другом') > -1)) MsgSend([mesArr22_good[getRandomInt(3)], peer]);
+    
+        }
+    
+        // Универсальные
+        if ((text.split(' ')[0] == 'willow') || (text.split(' ')[0] == 'виллоу') || (text.split(' ')[0] == 'уиллоу')) {
+          if ((text.split(' ')[1] == undefined) || (text.split(' ')[1] == 'wisp')) MsgSend([mesArr3_good[getRandomInt(4)], peer]);
+          if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21_good[getRandomInt(4)], peer]); repDown([vkid, 2]); }
+          if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4_good[getRandomInt(4)], peer]);
+          if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
+        }
+        if ((text.indexOf('сладких снов') > -1) || (text.indexOf('добрых снов') > -1) || (text.indexOf('спокойной ночи') > -1)) { MsgSend([mesArr5_good[getRandomInt(3)], peer]); repUp(vkid); }
+        if ((text.indexOf('доброе утро') > -1) || (text.indexOf('утрец') > -1)) {
+          let tmp = mesArr6_good[getRandomInt(4)];
+          if (tmp == 'Пожать руку') {
+            MsgSend([tmp + ' @id' + vkid, peer]);
+          } else {
+            MsgSend([tmp, peer]);
+          }
+          repUp(vkid);
+        }
+        if ((text.indexOf('добрый вечер') > -1) || (text.indexOf('вечер добрый') > -1)) { MsgSend([mesArr23_good[getRandomInt(3)], peer]); repUp(vkid); }
       }
     }
 
     // СРЕДНЯЯ РЕПУТАЦИЯ -25 до 25
     else {
+      if ((isrp == true) && (vkid == '-174105461')) {
 
-      // Сообщение в БЕСЕДЕ
-      if (type == true) {
-
-        if ((text.indexOf('@all') > -1) || (text.indexOf('@online') > -1)) MsgSend(['Что за сбор?', peer]);
-        
-      }
-  
-      // Сообщение в ЛС
-      if (type == false) {
-  
-        if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21[getRandomInt(4)], peer]); repDown([vkid, 5]); }
-        if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4[getRandomInt(4)], peer]);
-        if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
-        if ((text.indexOf('давай дружить') > -1) || (text.indexOf('будь моим другом') > -1)) { MsgSend([mesArr22[getRandomInt(3)], peer]); repUp(vkid); }
-  
-      }
-  
-      // Универсальные
-      if ((text.split(' ')[0] == 'willow') || (text.split(' ')[0] == 'виллоу')) {
-        if ((text.split(' ')[1] == undefined) || (text.split(' ')[1] == 'wisp')) MsgSend([mesArr3[getRandomInt(4)], peer]);
-        if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21[getRandomInt(4)], peer]); repDown([vkid, 5]); }
-        if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4[getRandomInt(4)], peer]);
-        if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
-      }
-      if ((text.indexOf('сладких снов') > -1) || (text.indexOf('добрых снов') > -1) || (text.indexOf('спокойной ночи') > -1)) { MsgSend([mesArr5[getRandomInt(3)], peer]); repUp(vkid); }
-      if ((text.indexOf('доброе утро') > -1) || (text.indexOf('утрец') > -1)) { MsgSend([mesArr6[getRandomInt(4)], peer]); repUp(vkid); }
-      if ((text.indexOf('добрый вечер') > -1) || (text.indexOf('вечер добрый') > -1)) { MsgSend([mesArr23[getRandomInt(3)], peer]); repUp(vkid); }
-  
-      if (vkid == '-174105461') {
         if ((text.indexOf('погладил [' + userID) > -1) || (text.indexOf('погладила [' + userID) > -1)) { MsgSend([mesArr7[getRandomInt(4)], peer]); repUp(parseInt(text.match(/\d+/))); }
         if ((text.indexOf('обнял [' + userID) > -1) || (text.indexOf('обняла [' + userID) > -1)) { MsgSend([mesArr8[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
         if ((text.indexOf('поцеловал [' + userID) > -1) || (text.indexOf('поцеловала [' + userID) > -1)) { MsgSend([mesArr9[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
@@ -401,6 +366,30 @@ easyvk({
           MsgSend(['Пожать руку @id' + parseInt(text.match(/\d+/)), peer]);
           repUp(parseInt(text.match(/\d+/)));
         }
+
+      } else {
+
+        // Сообщение в ЛС
+        if (type == false) {
+    
+          if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21[getRandomInt(4)], peer]); repDown([vkid, 5]); }
+          if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4[getRandomInt(4)], peer]);
+          if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
+          if ((text.indexOf('давай дружить') > -1) || (text.indexOf('будь моим другом') > -1)) { MsgSend([mesArr22[getRandomInt(3)], peer]); repUp(vkid); }
+    
+        }
+    
+        // Универсальные
+        if ((text.split(' ')[0] == 'willow') || (text.split(' ')[0] == 'виллоу') || (text.split(' ')[0] == 'уиллоу')) {
+          if ((text.split(' ')[1] == undefined) || (text.split(' ')[1] == 'wisp')) MsgSend([mesArr3[getRandomInt(4)], peer]);
+          if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21[getRandomInt(4)], peer]); repDown([vkid, 5]); }
+          if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4[getRandomInt(4)], peer]);
+          if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
+        }
+        if ((text.indexOf('сладких снов') > -1) || (text.indexOf('добрых снов') > -1) || (text.indexOf('спокойной ночи') > -1)) { MsgSend([mesArr5[getRandomInt(3)], peer]); repUp(vkid); }
+        if ((text.indexOf('доброе утро') > -1) || (text.indexOf('утрец') > -1)) { MsgSend([mesArr6[getRandomInt(4)], peer]); repUp(vkid); }
+        if ((text.indexOf('добрый вечер') > -1) || (text.indexOf('вечер добрый') > -1)) { MsgSend([mesArr23[getRandomInt(3)], peer]); repUp(vkid); }
+        
       }
     }
   }
