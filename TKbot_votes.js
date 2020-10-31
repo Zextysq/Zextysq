@@ -8,7 +8,6 @@ function getRandomInt(max) {
 }
 
 const peerId = '2000000001';
-const userID = 'id618124000';
 
 const admins = [272914196, 176284236];
 
@@ -72,19 +71,27 @@ easyvk({
 
               if (vkr['response']['items'][0]['attachments']['length'] !== 0) {
 
-                let attachments = vkr['response']['items'][0]['attachments']
-                let array_length = attachments['length'];
+                let attachments = vkr['response']['items'][0]['attachments'];
                 let photos_array = [];
 
-                for (let i = 0; i < array_length; i++) {
+                for (let i = 0; i < attachments['length']; i++) {
                   if (attachments[i]['type'] !== 'photo') {
                     MsgSend(['В сообщении присутствуют не только картинки!\nОтправь "!начать" в ответ(reply) на сообщение с артами', peerId]);
                     break;
                   } else {
-                    photos_array[i] = attachments[i]['photo']['sizes'][5]['url'];
+                    let sizes = [];
+                    for (let n = 0; n < attachments[i]['photo']['sizes']['length']; n++) {
+                      sizes[n] = attachments[i]['photo']['sizes'][n]['type'];
+                    }
+                    if (sizes.indexOf('w') != -1) photos_array[i] = attachments[i]['photo']['sizes'][sizes.indexOf('w')]['url'];
+                    else if (sizes.indexOf('z') != -1) photos_array[i] = attachments[i]['photo']['sizes'][sizes.indexOf('z')]['url'];
+                    else if (sizes.indexOf('y') != -1) photos_array[i] = attachments[i]['photo']['sizes'][sizes.indexOf('y')]['url'];
+                    else if (sizes.indexOf('x') != -1) photos_array[i] = attachments[i]['photo']['sizes'][sizes.indexOf('x')]['url'];
+                    else if (sizes.indexOf('m') != -1) photos_array[i] = attachments[i]['photo']['sizes'][sizes.indexOf('m')]['url'];
+                    else if (sizes.indexOf('s') != -1) photos_array[i] = attachments[i]['photo']['sizes'][sizes.indexOf('s')]['url'];
                   }
                 }
-
+                
                 newVote([photos_array, tmp['conversation_message_id'], vkr['response']['items'][0]['from_id']]);
 
               } else {
