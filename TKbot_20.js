@@ -138,9 +138,10 @@ easyvk({
     if ((type == true) && (attachments['from'] !== undefined)) vkid = attachments['from'];
     else vkid = data[3];
     let text = data[5];
+    let isrp = false;
 
     if (vkid == '-174105461') {
-      let isrp = false;
+      
       let tmpid;
       rp.forEach(function(entry) {
         if (text.indexOf(entry) > -1) isrp = true;
