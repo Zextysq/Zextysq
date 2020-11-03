@@ -203,40 +203,41 @@ easyvk({
 
     // ПЛОХАЯ РЕПУТАЦИЯ ниже -25
     if (reputation < -25) {
-      if ((isrp == true) && (vkid == '-174105461')) {
-
-        if ((text.indexOf('погладил [' + userID) > -1) || (text.indexOf('погладила [' + userID) > -1)) { MsgSend([mesArr7_bad[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
-        if ((text.indexOf('обнял [' + userID) > -1) || (text.indexOf('обняла [' + userID) > -1)) { MsgSend([mesArr8_bad[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
-        if ((text.indexOf('поцеловал [' + userID) > -1) || (text.indexOf('поцеловала [' + userID) > -1)) { MsgSend([mesArr9_bad[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
-        if ((text.indexOf('похвалил [' + userID) > -1) || (text.indexOf('похвалила [' + userID) > -1)) { MsgSend([mesArr10_bad[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
-        if ((text.indexOf('пнул [' + userID) > -1) || (text.indexOf('пнула [' + userID) > -1)) { MsgSend([mesArr11_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 5]); }
-        if ((text.indexOf('сжёг [' + userID) > -1) || (text.indexOf('сожгла [' + userID) > -1)) { MsgSend([mesArr12_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if ((text.indexOf('убил [' + userID) > -1) || (text.indexOf('убила [' + userID) > -1)) { MsgSend([mesArr13_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if ((text.indexOf('лизнул [' + userID) > -1) || (text.indexOf('лизнула [' + userID) > -1)) MsgSend([mesArr14_bad[getRandomInt(3)], peer]);
-        if ((text.indexOf('взорвал [' + userID) > -1) || (text.indexOf('взорвала [' + userID) > -1)) { MsgSend([mesArr15_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if ((text.indexOf('связал [' + userID) > -1) || (text.indexOf('связала [' + userID) > -1)) { MsgSend([mesArr16_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 2]); }
-        if ((text.indexOf('ударил [' + userID) > -1) || (text.indexOf('ударила [' + userID) > -1)) {
-          let tmp = mesArr17_bad[getRandomInt(2)];
-          if (tmp == 'Сама себя не защитишь - никто не защитит') {
-            MsgSend(['Ударить @id' + text.match(/\d+/) + '\n' + tmp, peer]);
-            repDown([parseInt(text.match(/\d+/)), 1]);
-          } else {
-            MsgSend([tmp, peer]);
-            repDown([parseInt(text.match(/\d+/)), 1]);
+      if (isrp == true) {
+        if (vkid == '-174105461') {
+          if ((text.indexOf('погладил [' + userID) > -1) || (text.indexOf('погладила [' + userID) > -1)) { MsgSend([mesArr7_bad[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
+          if ((text.indexOf('обнял [' + userID) > -1) || (text.indexOf('обняла [' + userID) > -1)) { MsgSend([mesArr8_bad[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
+          if ((text.indexOf('поцеловал [' + userID) > -1) || (text.indexOf('поцеловала [' + userID) > -1)) { MsgSend([mesArr9_bad[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
+          if ((text.indexOf('похвалил [' + userID) > -1) || (text.indexOf('похвалила [' + userID) > -1)) { MsgSend([mesArr10_bad[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
+          if ((text.indexOf('пнул [' + userID) > -1) || (text.indexOf('пнула [' + userID) > -1)) { MsgSend([mesArr11_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 5]); }
+          if ((text.indexOf('сжёг [' + userID) > -1) || (text.indexOf('сожгла [' + userID) > -1)) { MsgSend([mesArr12_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+          if ((text.indexOf('убил [' + userID) > -1) || (text.indexOf('убила [' + userID) > -1)) { MsgSend([mesArr13_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+          if ((text.indexOf('лизнул [' + userID) > -1) || (text.indexOf('лизнула [' + userID) > -1)) MsgSend([mesArr14_bad[getRandomInt(3)], peer]);
+          if ((text.indexOf('взорвал [' + userID) > -1) || (text.indexOf('взорвала [' + userID) > -1)) { MsgSend([mesArr15_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+          if ((text.indexOf('связал [' + userID) > -1) || (text.indexOf('связала [' + userID) > -1)) { MsgSend([mesArr16_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 2]); }
+          if ((text.indexOf('ударил [' + userID) > -1) || (text.indexOf('ударила [' + userID) > -1)) {
+            let tmp = mesArr17_bad[getRandomInt(2)];
+            if (tmp == 'Сама себя не защитишь - никто не защитит') {
+              MsgSend(['Ударить @id' + text.match(/\d+/) + '\n' + tmp, peer]);
+              repDown([parseInt(text.match(/\d+/)), 1]);
+            } else {
+              MsgSend([tmp, peer]);
+              repDown([parseInt(text.match(/\d+/)), 1]);
+            }
           }
-        }
-        if ((text.indexOf('шлёпнул [' + userID) > -1) || (text.indexOf('шлёпнула [' + userID) > -1)) { MsgSend([mesArr18_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if ((text.indexOf('кусьнул [' + userID) > -1) || (text.indexOf('укусил [' + userID) > -1) || (text.indexOf('кусьнула [' + userID) > -1) || (text.indexOf('укусила [' + userID) > -1)) {
-          let tmp = mesArr19_bad[getRandomInt(2)];
-          if (tmp == 'Ну ты сам напросился!') {
-            MsgSend(['Укусить @id' + text.match(/\d+/) + '\n' + tmp, peer]);
-            repDown([parseInt(text.match(/\d+/)), 1]);
-          } else {
-            MsgSend([tmp, peer]);
-            repDown([parseInt(text.match(/\d+/)), 1]);
+          if ((text.indexOf('шлёпнул [' + userID) > -1) || (text.indexOf('шлёпнула [' + userID) > -1)) { MsgSend([mesArr18_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+          if ((text.indexOf('кусьнул [' + userID) > -1) || (text.indexOf('укусил [' + userID) > -1) || (text.indexOf('кусьнула [' + userID) > -1) || (text.indexOf('укусила [' + userID) > -1)) {
+            let tmp = mesArr19_bad[getRandomInt(2)];
+            if (tmp == 'Ну ты сам напросился!') {
+              MsgSend(['Укусить @id' + text.match(/\d+/) + '\n' + tmp, peer]);
+              repDown([parseInt(text.match(/\d+/)), 1]);
+            } else {
+              MsgSend([tmp, peer]);
+              repDown([parseInt(text.match(/\d+/)), 1]);
+            }
           }
+          if (text.indexOf('интиму [' + userID) > -1) { MsgSend([mesArr20_bad[getRandomInt(4)], peer]); repDown([parseInt(text.match(/\d+/)), 10]); }
         }
-        if (text.indexOf('интиму [' + userID) > -1) { MsgSend([mesArr20_bad[getRandomInt(4)], peer]); repDown([parseInt(text.match(/\d+/)), 10]); }
 
       } else {
 
@@ -266,47 +267,48 @@ easyvk({
 
     // ОТЛИЧНАЯ РЕПУТАЦИЯ более 25
     if (reputation > 25) {
-      if ((isrp == true) && (vkid == '-174105461')) {
-
-        if ((text.indexOf('погладил [' + userID) > -1) || (text.indexOf('погладила [' + userID) > -1)) {
-          let tmp = mesArr7_good[getRandomInt(4)];
-          if (tmp == 'Обнять') {
-            MsgSend([tmp + ' @id' + text.match(/\d+/), peer]);
-            repUp(parseInt(text.match(/\d+/)));
-          } else {
-            MsgSend([tmp, peer]);
+      if (isrp == true) {
+        if (vkid == '-174105461') {
+          if ((text.indexOf('погладил [' + userID) > -1) || (text.indexOf('погладила [' + userID) > -1)) {
+            let tmp = mesArr7_good[getRandomInt(4)];
+            if (tmp == 'Обнять') {
+              MsgSend([tmp + ' @id' + text.match(/\d+/), peer]);
+              repUp(parseInt(text.match(/\d+/)));
+            } else {
+              MsgSend([tmp, peer]);
+              repUp(parseInt(text.match(/\d+/)));
+            }
+          }
+          if ((text.indexOf('обнял [' + userID) > -1) || (text.indexOf('обняла [' + userID) > -1)) {
+            let tmp = mesArr8_good[getRandomInt(3)];
+            if (tmp == 'Поцеловать') {
+              MsgSend([tmp + ' @id' + text.match(/\d+/), peer]);
+              repUp(parseInt(text.match(/\d+/)));
+            } else {
+              MsgSend([tmp, peer]);
+              repUp(parseInt(text.match(/\d+/)));
+            }
+          }
+          if ((text.indexOf('поцеловал [' + userID) > -1) || (text.indexOf('поцеловала [' + userID) > -1)) { MsgSend([mesArr9_good[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
+          if ((text.indexOf('похвалил [' + userID) > -1) || (text.indexOf('похвалила [' + userID) > -1)) { MsgSend([mesArr10_good[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
+          if ((text.indexOf('пнул [' + userID) > -1) || (text.indexOf('пнула [' + userID) > -1)) { MsgSend([mesArr11_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 5]); }
+          if ((text.indexOf('сжёг [' + userID) > -1) || (text.indexOf('сожгла [' + userID) > -1)) { MsgSend([mesArr12_good[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+          if ((text.indexOf('убил [' + userID) > -1) || (text.indexOf('убила [' + userID) > -1)) { MsgSend([mesArr13_good[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+          if ((text.indexOf('лизнул [' + userID) > -1) || (text.indexOf('лизнула [' + userID) > -1)) MsgSend([mesArr14_good[getRandomInt(3)], peer]);
+          if ((text.indexOf('взорвал [' + userID) > -1) || (text.indexOf('взорвала [' + userID) > -1)) { MsgSend([mesArr15_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+          if ((text.indexOf('связал [' + userID) > -1) || (text.indexOf('связала [' + userID) > -1)) { MsgSend([mesArr16_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 2]); }
+          if ((text.indexOf('ударил [' + userID) > -1) || (text.indexOf('ударила [' + userID) > -1)) { MsgSend([mesArr17_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+          if ((text.indexOf('шлёпнул [' + userID) > -1) || (text.indexOf('шлёпнула [' + userID) > -1)) { MsgSend([mesArr18_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+          if ((text.indexOf('кусьнул [' + userID) > -1) || (text.indexOf('укусил [' + userID) > -1) || (text.indexOf('кусьнула [' + userID) > -1) || (text.indexOf('укусила [' + userID) > -1)) { MsgSend([mesArr19_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+          if (text.indexOf('интиму [' + userID) > -1) { MsgSend([mesArr20_good[getRandomInt(4)], peer]); repDown([parseInt(text.match(/\d+/)), 10]); }
+          if ((text.indexOf('дал пять [' + userID) > -1) || (text.indexOf('дала пять [' + userID) > -1)) {
+            MsgSend(['Дать пять @id' + parseInt(text.match(/\d+/)), peer]);
             repUp(parseInt(text.match(/\d+/)));
           }
-        }
-        if ((text.indexOf('обнял [' + userID) > -1) || (text.indexOf('обняла [' + userID) > -1)) {
-          let tmp = mesArr8_good[getRandomInt(3)];
-          if (tmp == 'Поцеловать') {
-            MsgSend([tmp + ' @id' + text.match(/\d+/), peer]);
-            repUp(parseInt(text.match(/\d+/)));
-          } else {
-            MsgSend([tmp, peer]);
+          if ((text.indexOf('пожал руку [' + userID) > -1) || (text.indexOf('пожала руку [' + userID) > -1)) {
+            MsgSend(['Пожать руку @id' + parseInt(text.match(/\d+/)), peer]);
             repUp(parseInt(text.match(/\d+/)));
           }
-        }
-        if ((text.indexOf('поцеловал [' + userID) > -1) || (text.indexOf('поцеловала [' + userID) > -1)) { MsgSend([mesArr9_good[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
-        if ((text.indexOf('похвалил [' + userID) > -1) || (text.indexOf('похвалила [' + userID) > -1)) { MsgSend([mesArr10_good[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
-        if ((text.indexOf('пнул [' + userID) > -1) || (text.indexOf('пнула [' + userID) > -1)) { MsgSend([mesArr11_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 5]); }
-        if ((text.indexOf('сжёг [' + userID) > -1) || (text.indexOf('сожгла [' + userID) > -1)) { MsgSend([mesArr12_good[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if ((text.indexOf('убил [' + userID) > -1) || (text.indexOf('убила [' + userID) > -1)) { MsgSend([mesArr13_good[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if ((text.indexOf('лизнул [' + userID) > -1) || (text.indexOf('лизнула [' + userID) > -1)) MsgSend([mesArr14_good[getRandomInt(3)], peer]);
-        if ((text.indexOf('взорвал [' + userID) > -1) || (text.indexOf('взорвала [' + userID) > -1)) { MsgSend([mesArr15_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if ((text.indexOf('связал [' + userID) > -1) || (text.indexOf('связала [' + userID) > -1)) { MsgSend([mesArr16_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 2]); }
-        if ((text.indexOf('ударил [' + userID) > -1) || (text.indexOf('ударила [' + userID) > -1)) { MsgSend([mesArr17_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if ((text.indexOf('шлёпнул [' + userID) > -1) || (text.indexOf('шлёпнула [' + userID) > -1)) { MsgSend([mesArr18_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if ((text.indexOf('кусьнул [' + userID) > -1) || (text.indexOf('укусил [' + userID) > -1) || (text.indexOf('кусьнула [' + userID) > -1) || (text.indexOf('укусила [' + userID) > -1)) { MsgSend([mesArr19_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if (text.indexOf('интиму [' + userID) > -1) { MsgSend([mesArr20_good[getRandomInt(4)], peer]); repDown([parseInt(text.match(/\d+/)), 10]); }
-        if ((text.indexOf('дал пять [' + userID) > -1) || (text.indexOf('дала пять [' + userID) > -1)) {
-          MsgSend(['Дать пять @id' + parseInt(text.match(/\d+/)), peer]);
-          repUp(parseInt(text.match(/\d+/)));
-        }
-        if ((text.indexOf('пожал руку [' + userID) > -1) || (text.indexOf('пожала руку [' + userID) > -1)) {
-          MsgSend(['Пожать руку @id' + parseInt(text.match(/\d+/)), peer]);
-          repUp(parseInt(text.match(/\d+/)));
         }
 
       } else {
@@ -342,30 +344,31 @@ easyvk({
     }
 
     // СРЕДНЯЯ РЕПУТАЦИЯ -25 до 25
-    else {
-      if ((isrp == true) && (vkid == '-174105461')) {
-
-        if ((text.indexOf('погладил [' + userID) > -1) || (text.indexOf('погладила [' + userID) > -1)) { MsgSend([mesArr7[getRandomInt(4)], peer]); repUp(parseInt(text.match(/\d+/))); }
-        if ((text.indexOf('обнял [' + userID) > -1) || (text.indexOf('обняла [' + userID) > -1)) { MsgSend([mesArr8[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
-        if ((text.indexOf('поцеловал [' + userID) > -1) || (text.indexOf('поцеловала [' + userID) > -1)) { MsgSend([mesArr9[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
-        if ((text.indexOf('похвалил [' + userID) > -1) || (text.indexOf('похвалила [' + userID) > -1)) { MsgSend([mesArr10[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
-        if ((text.indexOf('пнул [' + userID) > -1) || (text.indexOf('пнула [' + userID) > -1)) { MsgSend([mesArr11[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 5]); }
-        if ((text.indexOf('сжёг [' + userID) > -1) || (text.indexOf('сожгла [' + userID) > -1)) { MsgSend([mesArr12[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if ((text.indexOf('убил [' + userID) > -1) || (text.indexOf('убила [' + userID) > -1)) { MsgSend([mesArr13[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if ((text.indexOf('лизнул [' + userID) > -1) || (text.indexOf('лизнула [' + userID) > -1)) MsgSend([mesArr14[getRandomInt(3)], peer]);
-        if ((text.indexOf('взорвал [' + userID) > -1) || (text.indexOf('взорвала [' + userID) > -1)) { MsgSend([mesArr15[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if ((text.indexOf('связал [' + userID) > -1) || (text.indexOf('связала [' + userID) > -1)) { MsgSend([mesArr16[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 2]); }
-        if ((text.indexOf('ударил [' + userID) > -1) || (text.indexOf('ударила [' + userID) > -1)) { MsgSend([mesArr17[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if ((text.indexOf('шлёпнул [' + userID) > -1) || (text.indexOf('шлёпнула [' + userID) > -1)) { MsgSend([mesArr18[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if ((text.indexOf('кусьнул [' + userID) > -1) || (text.indexOf('укусил [' + userID) > -1) || (text.indexOf('кусьнула [' + userID) > -1) || (text.indexOf('укусила [' + userID) > -1)) { MsgSend([mesArr19[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-        if (text.indexOf('интиму [' + userID) > -1) { MsgSend([mesArr20[getRandomInt(4)], peer]); repDown([parseInt(text.match(/\d+/)), 5]); }
-        if ((text.indexOf('дал пять [' + userID) > -1) || (text.indexOf('дала пять [' + userID) > -1)) {
-          MsgSend(['Дать пять @id' + parseInt(text.match(/\d+/)), peer]);
-          repUp(parseInt(text.match(/\d+/)));
-        }
-        if ((text.indexOf('пожал руку [' + userID) > -1) || (text.indexOf('пожала руку [' + userID) > -1)) {
-          MsgSend(['Пожать руку @id' + parseInt(text.match(/\d+/)), peer]);
-          repUp(parseInt(text.match(/\d+/)));
+    if ((reputation >= -24) && (reputation <= 24)) {
+      if (isrp == true) {
+        if (vkid == '-174105461') {
+          if ((text.indexOf('погладил [' + userID) > -1) || (text.indexOf('погладила [' + userID) > -1)) { MsgSend([mesArr7[getRandomInt(4)], peer]); repUp(parseInt(text.match(/\d+/))); }
+          if ((text.indexOf('обнял [' + userID) > -1) || (text.indexOf('обняла [' + userID) > -1)) { MsgSend([mesArr8[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
+          if ((text.indexOf('поцеловал [' + userID) > -1) || (text.indexOf('поцеловала [' + userID) > -1)) { MsgSend([mesArr9[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
+          if ((text.indexOf('похвалил [' + userID) > -1) || (text.indexOf('похвалила [' + userID) > -1)) { MsgSend([mesArr10[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
+          if ((text.indexOf('пнул [' + userID) > -1) || (text.indexOf('пнула [' + userID) > -1)) { MsgSend([mesArr11[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 5]); }
+          if ((text.indexOf('сжёг [' + userID) > -1) || (text.indexOf('сожгла [' + userID) > -1)) { MsgSend([mesArr12[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+          if ((text.indexOf('убил [' + userID) > -1) || (text.indexOf('убила [' + userID) > -1)) { MsgSend([mesArr13[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+          if ((text.indexOf('лизнул [' + userID) > -1) || (text.indexOf('лизнула [' + userID) > -1)) MsgSend([mesArr14[getRandomInt(3)], peer]);
+          if ((text.indexOf('взорвал [' + userID) > -1) || (text.indexOf('взорвала [' + userID) > -1)) { MsgSend([mesArr15[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+          if ((text.indexOf('связал [' + userID) > -1) || (text.indexOf('связала [' + userID) > -1)) { MsgSend([mesArr16[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 2]); }
+          if ((text.indexOf('ударил [' + userID) > -1) || (text.indexOf('ударила [' + userID) > -1)) { MsgSend([mesArr17[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+          if ((text.indexOf('шлёпнул [' + userID) > -1) || (text.indexOf('шлёпнула [' + userID) > -1)) { MsgSend([mesArr18[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+          if ((text.indexOf('кусьнул [' + userID) > -1) || (text.indexOf('укусил [' + userID) > -1) || (text.indexOf('кусьнула [' + userID) > -1) || (text.indexOf('укусила [' + userID) > -1)) { MsgSend([mesArr19[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+          if (text.indexOf('интиму [' + userID) > -1) { MsgSend([mesArr20[getRandomInt(4)], peer]); repDown([parseInt(text.match(/\d+/)), 5]); }
+          if ((text.indexOf('дал пять [' + userID) > -1) || (text.indexOf('дала пять [' + userID) > -1)) {
+            MsgSend(['Дать пять @id' + parseInt(text.match(/\d+/)), peer]);
+            repUp(parseInt(text.match(/\d+/)));
+          }
+          if ((text.indexOf('пожал руку [' + userID) > -1) || (text.indexOf('пожала руку [' + userID) > -1)) {
+            MsgSend(['Пожать руку @id' + parseInt(text.match(/\d+/)), peer]);
+            repUp(parseInt(text.match(/\d+/)));
+          }
         }
 
       } else {
