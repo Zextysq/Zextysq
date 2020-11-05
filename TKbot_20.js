@@ -14,7 +14,7 @@ const appToken = '98dad81f98dad81f98dad81f8498a9bba4998da98dad81fc7f542457a8c906
 const peerId = '2000000001';
 const userID = 'id618124000';
 
-const rp = ['погладил','погладила','обнял','обняла','поцеловал','поцеловала','похвалил','похвалила','пнул','пнула','сжёг','сожгла','убил','убила','лизнул','лизнула','взорвал','взорвала','связал','связала','ударил','ударила','шлёпнул','шлёпнула','кусьнул','укусил','кусьнула','укусила','интиму'];
+const rp = ['погладил', 'погладила', 'обнял', 'обняла', 'поцеловал', 'поцеловала', 'похвалил', 'похвалила', 'пнул', 'пнула', 'сжёг', 'сожгла', 'убил', 'убила', 'лизнул', 'лизнула', 'взорвал', 'взорвала', 'связал', 'связала', 'ударил', 'ударила', 'шлёпнул', 'шлёпнула', 'кусьнул', 'укусил', 'кусьнула', 'укусила', 'интиму'];
 
 const mesArr = ['Новый пост в группе, ня!', 'Хей, тут новый пост в группе!', 'Ловите новый пост в группе!'];
 const mesArr2 = ['Ловите новую страничку, ня!', 'Пс, тут новая страничка вышла!', 'Пора читать новую страничку!'];
@@ -141,9 +141,9 @@ easyvk({
     var isrp = false;
 
     if (vkid == '-174105461') {
-      
+
       let tmpid;
-      rp.forEach(function(entry) {
+      rp.forEach(function (entry) {
         if (text.indexOf(entry) > -1) isrp = true;
       });
 
@@ -174,7 +174,7 @@ easyvk({
         }
       );
     }
-    
+
   }
 
   function msgResearch(data) {
@@ -187,8 +187,8 @@ easyvk({
     let attachments = data[6];
     let reputation = data[7];
     let isrp = data[8];
-    
-    
+
+
     if ((text.charAt(0) == 'т') && (text.charAt(1) == 'к')) {
       if ((text.length > 2) && (text.match(/\d+/) > 0)) RusStrGet([text, peer]);
       else MsgSend(['Использование команды "ТК" (Русские буквы): \n ТК <номер страницы> \n Возвращает переведённую страницу в виде картинки', peer]);
@@ -202,199 +202,190 @@ easyvk({
     }
 
     // ПЛОХАЯ РЕПУТАЦИЯ ниже -25
-    if (reputation < -25) {
-      if (isrp == true) {
-        if (vkid == '-174105461') {
-          if ((text.indexOf('погладил [' + userID) > -1) || (text.indexOf('погладила [' + userID) > -1)) { MsgSend([mesArr7_bad[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
-          if ((text.indexOf('обнял [' + userID) > -1) || (text.indexOf('обняла [' + userID) > -1)) { MsgSend([mesArr8_bad[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
-          if ((text.indexOf('поцеловал [' + userID) > -1) || (text.indexOf('поцеловала [' + userID) > -1)) { MsgSend([mesArr9_bad[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
-          if ((text.indexOf('похвалил [' + userID) > -1) || (text.indexOf('похвалила [' + userID) > -1)) { MsgSend([mesArr10_bad[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
-          if ((text.indexOf('пнул [' + userID) > -1) || (text.indexOf('пнула [' + userID) > -1)) { MsgSend([mesArr11_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 5]); }
-          if ((text.indexOf('сжёг [' + userID) > -1) || (text.indexOf('сожгла [' + userID) > -1)) { MsgSend([mesArr12_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-          if ((text.indexOf('убил [' + userID) > -1) || (text.indexOf('убила [' + userID) > -1)) { MsgSend([mesArr13_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-          if ((text.indexOf('лизнул [' + userID) > -1) || (text.indexOf('лизнула [' + userID) > -1)) MsgSend([mesArr14_bad[getRandomInt(3)], peer]);
-          if ((text.indexOf('взорвал [' + userID) > -1) || (text.indexOf('взорвала [' + userID) > -1)) { MsgSend([mesArr15_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-          if ((text.indexOf('связал [' + userID) > -1) || (text.indexOf('связала [' + userID) > -1)) { MsgSend([mesArr16_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 2]); }
-          if ((text.indexOf('ударил [' + userID) > -1) || (text.indexOf('ударила [' + userID) > -1)) {
-            let tmp = mesArr17_bad[getRandomInt(2)];
-            if (tmp == 'Сама себя не защитишь - никто не защитит') {
-              MsgSend(['Ударить @id' + text.match(/\d+/) + '\n' + tmp, peer]);
-              repDown([parseInt(text.match(/\d+/)), 1]);
-            } else {
-              MsgSend([tmp, peer]);
-              repDown([parseInt(text.match(/\d+/)), 1]);
-            }
+    if (reputation <= -25) {
+      if (vkid == '-174105461') {
+        if ((text.indexOf('погладил [' + userID) > -1) || (text.indexOf('погладила [' + userID) > -1)) { MsgSend([mesArr7_bad[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
+        if ((text.indexOf('обнял [' + userID) > -1) || (text.indexOf('обняла [' + userID) > -1)) { MsgSend([mesArr8_bad[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
+        if ((text.indexOf('поцеловал [' + userID) > -1) || (text.indexOf('поцеловала [' + userID) > -1)) { MsgSend([mesArr9_bad[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
+        if ((text.indexOf('похвалил [' + userID) > -1) || (text.indexOf('похвалила [' + userID) > -1)) { MsgSend([mesArr10_bad[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
+        if ((text.indexOf('пнул [' + userID) > -1) || (text.indexOf('пнула [' + userID) > -1)) { MsgSend([mesArr11_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 5]); }
+        if ((text.indexOf('сжёг [' + userID) > -1) || (text.indexOf('сожгла [' + userID) > -1)) { MsgSend([mesArr12_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if ((text.indexOf('убил [' + userID) > -1) || (text.indexOf('убила [' + userID) > -1)) { MsgSend([mesArr13_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if ((text.indexOf('лизнул [' + userID) > -1) || (text.indexOf('лизнула [' + userID) > -1)) MsgSend([mesArr14_bad[getRandomInt(3)], peer]);
+        if ((text.indexOf('взорвал [' + userID) > -1) || (text.indexOf('взорвала [' + userID) > -1)) { MsgSend([mesArr15_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if ((text.indexOf('связал [' + userID) > -1) || (text.indexOf('связала [' + userID) > -1)) { MsgSend([mesArr16_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 2]); }
+        if ((text.indexOf('ударил [' + userID) > -1) || (text.indexOf('ударила [' + userID) > -1)) {
+          let tmp = mesArr17_bad[getRandomInt(2)];
+          if (tmp == 'Сама себя не защитишь - никто не защитит') {
+            MsgSend(['Ударить @id' + text.match(/\d+/) + '\n' + tmp, peer]);
+            repDown([parseInt(text.match(/\d+/)), 1]);
+          } else {
+            MsgSend([tmp, peer]);
+            repDown([parseInt(text.match(/\d+/)), 1]);
           }
-          if ((text.indexOf('шлёпнул [' + userID) > -1) || (text.indexOf('шлёпнула [' + userID) > -1)) { MsgSend([mesArr18_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-          if ((text.indexOf('кусьнул [' + userID) > -1) || (text.indexOf('укусил [' + userID) > -1) || (text.indexOf('кусьнула [' + userID) > -1) || (text.indexOf('укусила [' + userID) > -1)) {
-            let tmp = mesArr19_bad[getRandomInt(2)];
-            if (tmp == 'Ну ты сам напросился!') {
-              MsgSend(['Укусить @id' + text.match(/\d+/) + '\n' + tmp, peer]);
-              repDown([parseInt(text.match(/\d+/)), 1]);
-            } else {
-              MsgSend([tmp, peer]);
-              repDown([parseInt(text.match(/\d+/)), 1]);
-            }
+        }
+        if ((text.indexOf('шлёпнул [' + userID) > -1) || (text.indexOf('шлёпнула [' + userID) > -1)) { MsgSend([mesArr18_bad[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if ((text.indexOf('кусьнул [' + userID) > -1) || (text.indexOf('укусил [' + userID) > -1) || (text.indexOf('кусьнула [' + userID) > -1) || (text.indexOf('укусила [' + userID) > -1)) {
+          let tmp = mesArr19_bad[getRandomInt(2)];
+          if (tmp == 'Ну ты сам напросился!') {
+            MsgSend(['Укусить @id' + text.match(/\d+/) + '\n' + tmp, peer]);
+            repDown([parseInt(text.match(/\d+/)), 1]);
+          } else {
+            MsgSend([tmp, peer]);
+            repDown([parseInt(text.match(/\d+/)), 1]);
           }
-          if (text.indexOf('интиму [' + userID) > -1) { MsgSend([mesArr20_bad[getRandomInt(4)], peer]); repDown([parseInt(text.match(/\d+/)), 10]); }
         }
-
-      } else {
-
-        // Сообщение в ЛС
-        if (type == false) {
-    
-          if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21_bad[getRandomInt(3)], peer]); repDown([vkid, 5]); }
-          if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4_bad[getRandomInt(4)], peer]);
-          if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
-          if ((text.indexOf('давай дружить') > -1) || (text.indexOf('будь моим другом') > -1)) { MsgSend([mesArr22_bad[getRandomInt(3)], peer]); repUp(vkid); }
-          if ((text.indexOf('прости') > -1) || (text.indexOf('прошу прощения') > -1)) { MsgSend(['Предположим прощаю', peer]); repUp(vkid); }
-    
-        }
-    
-        // Универсальные
-        if ((text.split(' ')[0] == 'willow') || (text.split(' ')[0] == 'виллоу') || (text.split(' ')[0] == 'уиллоу')) {
-          if ((text.split(' ')[1] == undefined) || (text.split(' ')[1] == 'wisp')) MsgSend([mesArr3_bad[getRandomInt(3)], peer]);
-          if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21_bad[getRandomInt(3)], peer]); repDown([vkid, 5]); }
-          if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4_bad[getRandomInt(4)], peer]);
-          if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
-        }
-        if ((text.indexOf('сладких снов') > -1) || (text.indexOf('добрых снов') > -1) || (text.indexOf('спокойной ночи') > -1)) { MsgSend([mesArr5_bad[getRandomInt(2)], peer]); repUp(vkid); }
-        if ((text.indexOf('доброе утро') > -1) || (text.indexOf('утрец') > -1)) { MsgSend([mesArr6_bad[getRandomInt(2)], peer]); repUp(vkid); }
-        if ((text.indexOf('добрый вечер') > -1) || (text.indexOf('вечер добрый') > -1)) { MsgSend([mesArr23_bad[getRandomInt(2)], peer]); repUp(vkid); }
+        if (text.indexOf('интиму [' + userID) > -1) { MsgSend([mesArr20_bad[getRandomInt(4)], peer]); repDown([parseInt(text.match(/\d+/)), 10]); }
       }
+
+
+      // Сообщение в ЛС
+      if (type == false) {
+
+        if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21_bad[getRandomInt(3)], peer]); repDown([vkid, 5]); }
+        if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4_bad[getRandomInt(4)], peer]);
+        if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
+        if ((text.indexOf('давай дружить') > -1) || (text.indexOf('будь моим другом') > -1)) { MsgSend([mesArr22_bad[getRandomInt(3)], peer]); repUp(vkid); }
+        if ((text.indexOf('прости') > -1) || (text.indexOf('прошу прощения') > -1)) { MsgSend(['Предположим прощаю', peer]); repUp(vkid); }
+
+      }
+
+      // Универсальные
+      if ((text.split(' ')[0] == 'willow') || (text.split(' ')[0] == 'виллоу') || (text.split(' ')[0] == 'уиллоу')) {
+        if ((text.split(' ')[1] == undefined) || (text.split(' ')[1] == 'wisp')) MsgSend([mesArr3_bad[getRandomInt(3)], peer]);
+        if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21_bad[getRandomInt(3)], peer]); repDown([vkid, 5]); }
+        if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4_bad[getRandomInt(4)], peer]);
+        if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
+      }
+      if ((text.indexOf('сладких снов') > -1) || (text.indexOf('добрых снов') > -1) || (text.indexOf('спокойной ночи') > -1)) { MsgSend([mesArr5_bad[getRandomInt(2)], peer]); repUp(vkid); }
+      if ((text.indexOf('доброе утро') > -1) || (text.indexOf('утрец') > -1)) { MsgSend([mesArr6_bad[getRandomInt(2)], peer]); repUp(vkid); }
+      if ((text.indexOf('добрый вечер') > -1) || (text.indexOf('вечер добрый') > -1)) { MsgSend([mesArr23_bad[getRandomInt(2)], peer]); repUp(vkid); }
+
     }
 
     // ОТЛИЧНАЯ РЕПУТАЦИЯ более 25
-    if (reputation > 25) {
-      if (isrp == true) {
-        if (vkid == '-174105461') {
-          if ((text.indexOf('погладил [' + userID) > -1) || (text.indexOf('погладила [' + userID) > -1)) {
-            let tmp = mesArr7_good[getRandomInt(4)];
-            if (tmp == 'Обнять') {
-              MsgSend([tmp + ' @id' + text.match(/\d+/), peer]);
-              repUp(parseInt(text.match(/\d+/)));
-            } else {
-              MsgSend([tmp, peer]);
-              repUp(parseInt(text.match(/\d+/)));
-            }
-          }
-          if ((text.indexOf('обнял [' + userID) > -1) || (text.indexOf('обняла [' + userID) > -1)) {
-            let tmp = mesArr8_good[getRandomInt(3)];
-            if (tmp == 'Поцеловать') {
-              MsgSend([tmp + ' @id' + text.match(/\d+/), peer]);
-              repUp(parseInt(text.match(/\d+/)));
-            } else {
-              MsgSend([tmp, peer]);
-              repUp(parseInt(text.match(/\d+/)));
-            }
-          }
-          if ((text.indexOf('поцеловал [' + userID) > -1) || (text.indexOf('поцеловала [' + userID) > -1)) { MsgSend([mesArr9_good[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
-          if ((text.indexOf('похвалил [' + userID) > -1) || (text.indexOf('похвалила [' + userID) > -1)) { MsgSend([mesArr10_good[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
-          if ((text.indexOf('пнул [' + userID) > -1) || (text.indexOf('пнула [' + userID) > -1)) { MsgSend([mesArr11_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 5]); }
-          if ((text.indexOf('сжёг [' + userID) > -1) || (text.indexOf('сожгла [' + userID) > -1)) { MsgSend([mesArr12_good[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-          if ((text.indexOf('убил [' + userID) > -1) || (text.indexOf('убила [' + userID) > -1)) { MsgSend([mesArr13_good[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-          if ((text.indexOf('лизнул [' + userID) > -1) || (text.indexOf('лизнула [' + userID) > -1)) MsgSend([mesArr14_good[getRandomInt(3)], peer]);
-          if ((text.indexOf('взорвал [' + userID) > -1) || (text.indexOf('взорвала [' + userID) > -1)) { MsgSend([mesArr15_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-          if ((text.indexOf('связал [' + userID) > -1) || (text.indexOf('связала [' + userID) > -1)) { MsgSend([mesArr16_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 2]); }
-          if ((text.indexOf('ударил [' + userID) > -1) || (text.indexOf('ударила [' + userID) > -1)) { MsgSend([mesArr17_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-          if ((text.indexOf('шлёпнул [' + userID) > -1) || (text.indexOf('шлёпнула [' + userID) > -1)) { MsgSend([mesArr18_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-          if ((text.indexOf('кусьнул [' + userID) > -1) || (text.indexOf('укусил [' + userID) > -1) || (text.indexOf('кусьнула [' + userID) > -1) || (text.indexOf('укусила [' + userID) > -1)) { MsgSend([mesArr19_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-          if (text.indexOf('интиму [' + userID) > -1) { MsgSend([mesArr20_good[getRandomInt(4)], peer]); repDown([parseInt(text.match(/\d+/)), 10]); }
-          if ((text.indexOf('дал пять [' + userID) > -1) || (text.indexOf('дала пять [' + userID) > -1)) {
-            MsgSend(['Дать пять @id' + parseInt(text.match(/\d+/)), peer]);
+    if (reputation >= 25) {
+      if (vkid == '-174105461') {
+        if ((text.indexOf('погладил [' + userID) > -1) || (text.indexOf('погладила [' + userID) > -1)) {
+          let tmp = mesArr7_good[getRandomInt(4)];
+          if (tmp == 'Обнять') {
+            MsgSend([tmp + ' @id' + text.match(/\d+/), peer]);
             repUp(parseInt(text.match(/\d+/)));
-          }
-          if ((text.indexOf('пожал руку [' + userID) > -1) || (text.indexOf('пожала руку [' + userID) > -1)) {
-            MsgSend(['Пожать руку @id' + parseInt(text.match(/\d+/)), peer]);
-            repUp(parseInt(text.match(/\d+/)));
-          }
-        }
-
-      } else {
-        // Сообщение в ЛС
-        if (type == false) {
-    
-          if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21_good[getRandomInt(4)], peer]); repDown([vkid, 2]); }
-          if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4_good[getRandomInt(4)], peer]);
-          if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
-          if ((text.indexOf('давай дружить') > -1) || (text.indexOf('будь моим другом') > -1)) MsgSend([mesArr22_good[getRandomInt(3)], peer]);
-    
-        }
-    
-        // Универсальные
-        if ((text.split(' ')[0] == 'willow') || (text.split(' ')[0] == 'виллоу') || (text.split(' ')[0] == 'уиллоу')) {
-          if ((text.split(' ')[1] == undefined) || (text.split(' ')[1] == 'wisp')) MsgSend([mesArr3_good[getRandomInt(4)], peer]);
-          if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21_good[getRandomInt(4)], peer]); repDown([vkid, 2]); }
-          if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4_good[getRandomInt(4)], peer]);
-          if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
-        }
-        if ((text.indexOf('сладких снов') > -1) || (text.indexOf('добрых снов') > -1) || (text.indexOf('спокойной ночи') > -1)) { MsgSend([mesArr5_good[getRandomInt(3)], peer]); repUp(vkid); }
-        if ((text.indexOf('доброе утро') > -1) || (text.indexOf('утрец') > -1)) {
-          let tmp = mesArr6_good[getRandomInt(4)];
-          if (tmp == 'Пожать руку') {
-            MsgSend([tmp + ' @id' + vkid, peer]);
           } else {
             MsgSend([tmp, peer]);
+            repUp(parseInt(text.match(/\d+/)));
           }
-          repUp(vkid);
         }
-        if ((text.indexOf('добрый вечер') > -1) || (text.indexOf('вечер добрый') > -1)) { MsgSend([mesArr23_good[getRandomInt(3)], peer]); repUp(vkid); }
+        if ((text.indexOf('обнял [' + userID) > -1) || (text.indexOf('обняла [' + userID) > -1)) {
+          let tmp = mesArr8_good[getRandomInt(3)];
+          if (tmp == 'Поцеловать') {
+            MsgSend([tmp + ' @id' + text.match(/\d+/), peer]);
+            repUp(parseInt(text.match(/\d+/)));
+          } else {
+            MsgSend([tmp, peer]);
+            repUp(parseInt(text.match(/\d+/)));
+          }
+        }
+        if ((text.indexOf('поцеловал [' + userID) > -1) || (text.indexOf('поцеловала [' + userID) > -1)) { MsgSend([mesArr9_good[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
+        if ((text.indexOf('похвалил [' + userID) > -1) || (text.indexOf('похвалила [' + userID) > -1)) { MsgSend([mesArr10_good[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
+        if ((text.indexOf('пнул [' + userID) > -1) || (text.indexOf('пнула [' + userID) > -1)) { MsgSend([mesArr11_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 5]); }
+        if ((text.indexOf('сжёг [' + userID) > -1) || (text.indexOf('сожгла [' + userID) > -1)) { MsgSend([mesArr12_good[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if ((text.indexOf('убил [' + userID) > -1) || (text.indexOf('убила [' + userID) > -1)) { MsgSend([mesArr13_good[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if ((text.indexOf('лизнул [' + userID) > -1) || (text.indexOf('лизнула [' + userID) > -1)) MsgSend([mesArr14_good[getRandomInt(3)], peer]);
+        if ((text.indexOf('взорвал [' + userID) > -1) || (text.indexOf('взорвала [' + userID) > -1)) { MsgSend([mesArr15_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if ((text.indexOf('связал [' + userID) > -1) || (text.indexOf('связала [' + userID) > -1)) { MsgSend([mesArr16_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 2]); }
+        if ((text.indexOf('ударил [' + userID) > -1) || (text.indexOf('ударила [' + userID) > -1)) { MsgSend([mesArr17_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if ((text.indexOf('шлёпнул [' + userID) > -1) || (text.indexOf('шлёпнула [' + userID) > -1)) { MsgSend([mesArr18_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if ((text.indexOf('кусьнул [' + userID) > -1) || (text.indexOf('укусил [' + userID) > -1) || (text.indexOf('кусьнула [' + userID) > -1) || (text.indexOf('укусила [' + userID) > -1)) { MsgSend([mesArr19_good[getRandomInt(3)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if (text.indexOf('интиму [' + userID) > -1) { MsgSend([mesArr20_good[getRandomInt(4)], peer]); repDown([parseInt(text.match(/\d+/)), 10]); }
+        if ((text.indexOf('дал пять [' + userID) > -1) || (text.indexOf('дала пять [' + userID) > -1)) {
+          MsgSend(['Дать пять @id' + parseInt(text.match(/\d+/)), peer]);
+          repUp(parseInt(text.match(/\d+/)));
+        }
+        if ((text.indexOf('пожал руку [' + userID) > -1) || (text.indexOf('пожала руку [' + userID) > -1)) {
+          MsgSend(['Пожать руку @id' + parseInt(text.match(/\d+/)), peer]);
+          repUp(parseInt(text.match(/\d+/)));
+        }
       }
+
+      // Сообщение в ЛС
+      if (type == false) {
+
+        if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21_good[getRandomInt(4)], peer]); repDown([vkid, 2]); }
+        if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4_good[getRandomInt(4)], peer]);
+        if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
+        if ((text.indexOf('давай дружить') > -1) || (text.indexOf('будь моим другом') > -1)) MsgSend([mesArr22_good[getRandomInt(3)], peer]);
+
+      }
+
+      // Универсальные
+      if ((text.split(' ')[0] == 'willow') || (text.split(' ')[0] == 'виллоу') || (text.split(' ')[0] == 'уиллоу')) {
+        if ((text.split(' ')[1] == undefined) || (text.split(' ')[1] == 'wisp')) MsgSend([mesArr3_good[getRandomInt(4)], peer]);
+        if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21_good[getRandomInt(4)], peer]); repDown([vkid, 2]); }
+        if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4_good[getRandomInt(4)], peer]);
+        if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
+      }
+      if ((text.indexOf('сладких снов') > -1) || (text.indexOf('добрых снов') > -1) || (text.indexOf('спокойной ночи') > -1)) { MsgSend([mesArr5_good[getRandomInt(3)], peer]); repUp(vkid); }
+      if ((text.indexOf('доброе утро') > -1) || (text.indexOf('утрец') > -1)) {
+        let tmp = mesArr6_good[getRandomInt(4)];
+        if (tmp == 'Пожать руку') {
+          MsgSend([tmp + ' @id' + vkid, peer]);
+        } else {
+          MsgSend([tmp, peer]);
+        }
+        repUp(vkid);
+      }
+      if ((text.indexOf('добрый вечер') > -1) || (text.indexOf('вечер добрый') > -1)) { MsgSend([mesArr23_good[getRandomInt(3)], peer]); repUp(vkid); }
     }
 
     // СРЕДНЯЯ РЕПУТАЦИЯ -25 до 25
-    if ((reputation >= -24) && (reputation <= 24)) {
-      if (isrp == true) {
-        if (vkid == '-174105461') {
-          if ((text.indexOf('погладил [' + userID) > -1) || (text.indexOf('погладила [' + userID) > -1)) { MsgSend([mesArr7[getRandomInt(4)], peer]); repUp(parseInt(text.match(/\d+/))); }
-          if ((text.indexOf('обнял [' + userID) > -1) || (text.indexOf('обняла [' + userID) > -1)) { MsgSend([mesArr8[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
-          if ((text.indexOf('поцеловал [' + userID) > -1) || (text.indexOf('поцеловала [' + userID) > -1)) { MsgSend([mesArr9[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
-          if ((text.indexOf('похвалил [' + userID) > -1) || (text.indexOf('похвалила [' + userID) > -1)) { MsgSend([mesArr10[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
-          if ((text.indexOf('пнул [' + userID) > -1) || (text.indexOf('пнула [' + userID) > -1)) { MsgSend([mesArr11[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 5]); }
-          if ((text.indexOf('сжёг [' + userID) > -1) || (text.indexOf('сожгла [' + userID) > -1)) { MsgSend([mesArr12[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-          if ((text.indexOf('убил [' + userID) > -1) || (text.indexOf('убила [' + userID) > -1)) { MsgSend([mesArr13[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-          if ((text.indexOf('лизнул [' + userID) > -1) || (text.indexOf('лизнула [' + userID) > -1)) MsgSend([mesArr14[getRandomInt(3)], peer]);
-          if ((text.indexOf('взорвал [' + userID) > -1) || (text.indexOf('взорвала [' + userID) > -1)) { MsgSend([mesArr15[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-          if ((text.indexOf('связал [' + userID) > -1) || (text.indexOf('связала [' + userID) > -1)) { MsgSend([mesArr16[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 2]); }
-          if ((text.indexOf('ударил [' + userID) > -1) || (text.indexOf('ударила [' + userID) > -1)) { MsgSend([mesArr17[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-          if ((text.indexOf('шлёпнул [' + userID) > -1) || (text.indexOf('шлёпнула [' + userID) > -1)) { MsgSend([mesArr18[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-          if ((text.indexOf('кусьнул [' + userID) > -1) || (text.indexOf('укусил [' + userID) > -1) || (text.indexOf('кусьнула [' + userID) > -1) || (text.indexOf('укусила [' + userID) > -1)) { MsgSend([mesArr19[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
-          if (text.indexOf('интиму [' + userID) > -1) { MsgSend([mesArr20[getRandomInt(4)], peer]); repDown([parseInt(text.match(/\d+/)), 5]); }
-          if ((text.indexOf('дал пять [' + userID) > -1) || (text.indexOf('дала пять [' + userID) > -1)) {
-            MsgSend(['Дать пять @id' + parseInt(text.match(/\d+/)), peer]);
-            repUp(parseInt(text.match(/\d+/)));
-          }
-          if ((text.indexOf('пожал руку [' + userID) > -1) || (text.indexOf('пожала руку [' + userID) > -1)) {
-            MsgSend(['Пожать руку @id' + parseInt(text.match(/\d+/)), peer]);
-            repUp(parseInt(text.match(/\d+/)));
-          }
+    if ((reputation > -25) && (reputation < 25)) {
+      if (vkid == '-174105461') {
+        if ((text.indexOf('погладил [' + userID) > -1) || (text.indexOf('погладила [' + userID) > -1)) { MsgSend([mesArr7[getRandomInt(4)], peer]); repUp(parseInt(text.match(/\d+/))); }
+        if ((text.indexOf('обнял [' + userID) > -1) || (text.indexOf('обняла [' + userID) > -1)) { MsgSend([mesArr8[getRandomInt(3)], peer]); repUp(parseInt(text.match(/\d+/))); }
+        if ((text.indexOf('поцеловал [' + userID) > -1) || (text.indexOf('поцеловала [' + userID) > -1)) { MsgSend([mesArr9[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
+        if ((text.indexOf('похвалил [' + userID) > -1) || (text.indexOf('похвалила [' + userID) > -1)) { MsgSend([mesArr10[getRandomInt(2)], peer]); repUp(parseInt(text.match(/\d+/))); }
+        if ((text.indexOf('пнул [' + userID) > -1) || (text.indexOf('пнула [' + userID) > -1)) { MsgSend([mesArr11[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 5]); }
+        if ((text.indexOf('сжёг [' + userID) > -1) || (text.indexOf('сожгла [' + userID) > -1)) { MsgSend([mesArr12[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if ((text.indexOf('убил [' + userID) > -1) || (text.indexOf('убила [' + userID) > -1)) { MsgSend([mesArr13[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if ((text.indexOf('лизнул [' + userID) > -1) || (text.indexOf('лизнула [' + userID) > -1)) MsgSend([mesArr14[getRandomInt(3)], peer]);
+        if ((text.indexOf('взорвал [' + userID) > -1) || (text.indexOf('взорвала [' + userID) > -1)) { MsgSend([mesArr15[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if ((text.indexOf('связал [' + userID) > -1) || (text.indexOf('связала [' + userID) > -1)) { MsgSend([mesArr16[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 2]); }
+        if ((text.indexOf('ударил [' + userID) > -1) || (text.indexOf('ударила [' + userID) > -1)) { MsgSend([mesArr17[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if ((text.indexOf('шлёпнул [' + userID) > -1) || (text.indexOf('шлёпнула [' + userID) > -1)) { MsgSend([mesArr18[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if ((text.indexOf('кусьнул [' + userID) > -1) || (text.indexOf('укусил [' + userID) > -1) || (text.indexOf('кусьнула [' + userID) > -1) || (text.indexOf('укусила [' + userID) > -1)) { MsgSend([mesArr19[getRandomInt(2)], peer]); repDown([parseInt(text.match(/\d+/)), 1]); }
+        if (text.indexOf('интиму [' + userID) > -1) { MsgSend([mesArr20[getRandomInt(4)], peer]); repDown([parseInt(text.match(/\d+/)), 5]); }
+        if ((text.indexOf('дал пять [' + userID) > -1) || (text.indexOf('дала пять [' + userID) > -1)) {
+          MsgSend(['Дать пять @id' + parseInt(text.match(/\d+/)), peer]);
+          repUp(parseInt(text.match(/\d+/)));
         }
-
-      } else {
-
-        // Сообщение в ЛС
-        if (type == false) {
-    
-          if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21[getRandomInt(4)], peer]); repDown([vkid, 5]); }
-          if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4[getRandomInt(4)], peer]);
-          if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
-          if ((text.indexOf('давай дружить') > -1) || (text.indexOf('будь моим другом') > -1)) { MsgSend([mesArr22[getRandomInt(3)], peer]); repUp(vkid); }
-    
+        if ((text.indexOf('пожал руку [' + userID) > -1) || (text.indexOf('пожала руку [' + userID) > -1)) {
+          MsgSend(['Пожать руку @id' + parseInt(text.match(/\d+/)), peer]);
+          repUp(parseInt(text.match(/\d+/)));
         }
-    
-        // Универсальные
-        if ((text.split(' ')[0] == 'willow') || (text.split(' ')[0] == 'виллоу') || (text.split(' ')[0] == 'уиллоу')) {
-          if ((text.split(' ')[1] == undefined) || (text.split(' ')[1] == 'wisp')) MsgSend([mesArr3[getRandomInt(4)], peer]);
-          if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21[getRandomInt(4)], peer]); repDown([vkid, 5]); }
-          if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4[getRandomInt(4)], peer]);
-          if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
-        }
-        if ((text.indexOf('сладких снов') > -1) || (text.indexOf('добрых снов') > -1) || (text.indexOf('спокойной ночи') > -1)) { MsgSend([mesArr5[getRandomInt(3)], peer]); repUp(vkid); }
-        if ((text.indexOf('доброе утро') > -1) || (text.indexOf('утрец') > -1)) { MsgSend([mesArr6[getRandomInt(4)], peer]); repUp(vkid); }
-        if ((text.indexOf('добрый вечер') > -1) || (text.indexOf('вечер добрый') > -1)) { MsgSend([mesArr23[getRandomInt(3)], peer]); repUp(vkid); }
-        
       }
+
+      // Сообщение в ЛС
+      if (type == false) {
+
+        if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21[getRandomInt(4)], peer]); repDown([vkid, 5]); }
+        if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4[getRandomInt(4)], peer]);
+        if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
+        if ((text.indexOf('давай дружить') > -1) || (text.indexOf('будь моим другом') > -1)) { MsgSend([mesArr22[getRandomInt(3)], peer]); repUp(vkid); }
+
+      }
+
+      // Универсальные
+      if ((text.split(' ')[0] == 'willow') || (text.split(' ')[0] == 'виллоу') || (text.split(' ')[0] == 'уиллоу')) {
+        if ((text.split(' ')[1] == undefined) || (text.split(' ')[1] == 'wisp')) MsgSend([mesArr3[getRandomInt(4)], peer]);
+        if ((text.indexOf('киска') > -1) || (text.indexOf('киса') > -1)) { MsgSend([mesArr21[getRandomInt(4)], peer]); repDown([vkid, 5]); }
+        if ((text.indexOf('привет') > -1) || (text.indexOf('здраст') > -1) || (text.indexOf('здравст') > -1) || (text.indexOf('хэй') > -1) || (text.indexOf('хай') > -1)) MsgSend([mesArr4[getRandomInt(4)], peer]);
+        if ((text.indexOf('как дела') > -1) || (text.indexOf('как самочувствие') > -1) || (text.indexOf('как жизнь') > -1)) InfoSend(peer);
+      }
+      if ((text.indexOf('сладких снов') > -1) || (text.indexOf('добрых снов') > -1) || (text.indexOf('спокойной ночи') > -1)) { MsgSend([mesArr5[getRandomInt(3)], peer]); repUp(vkid); }
+      if ((text.indexOf('доброе утро') > -1) || (text.indexOf('утрец') > -1)) { MsgSend([mesArr6[getRandomInt(4)], peer]); repUp(vkid); }
+      if ((text.indexOf('добрый вечер') > -1) || (text.indexOf('вечер добрый') > -1)) { MsgSend([mesArr23[getRandomInt(3)], peer]); repUp(vkid); }
+
     }
   }
 
@@ -543,7 +534,7 @@ easyvk({
       count: 2,
       extended: 0,
       access_token: appToken
-    }).then( async (vkr) => {
+    }).then(async (vkr) => {
 
       for (let i = 0; i < 2; i++) {
 
@@ -574,7 +565,7 @@ easyvk({
       album_id: albumID,
       rev: 1,
       access_token: appToken
-    }).then( async (vkr) => {
+    }).then(async (vkr) => {
 
       for (let i = 0; i < 10; i++) {
 
@@ -595,7 +586,7 @@ easyvk({
   setInterval(memeTest, 18000);
 
   onlineMark();
-  function onlineMark () {
+  function onlineMark() {
     vk.call('account.setOnline').catch(error => {
       console.log('[X] Не удаётся отправить статус, ошибка!');
       console.log(error);
