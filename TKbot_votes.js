@@ -73,10 +73,12 @@ easyvk({
 
                 let attachments = vkr['response']['items'][0]['attachments'];
                 let photos_array = [];
+                let iserror = false;
 
                 for (let i = 0; i < attachments['length']; i++) {
                   if (attachments[i]['type'] !== 'photo') {
                     MsgSend(['В сообщении присутствуют не только картинки!\nОтправь "!начать" в ответ(reply) на сообщение с артами', peerId]);
+                    iserror = true;
                     break;
                   } else {
                     let sizes = [];
@@ -91,8 +93,8 @@ easyvk({
                     else if (sizes.indexOf('s') != -1) photos_array[i] = attachments[i]['photo']['sizes'][sizes.indexOf('s')]['url'];
                   }
                 }
-                
-                newVote([photos_array, tmp['conversation_message_id'], vkr['response']['items'][0]['from_id']]);
+
+                if (iserror == false) newVote([photos_array, tmp['conversation_message_id'], vkr['response']['items'][0]['from_id']]);
 
               } else {
                 MsgSend(['Отправь "!начать" в ответ(reply) на сообщение с артами', peerId]);
